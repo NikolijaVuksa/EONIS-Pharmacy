@@ -1,0 +1,576 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\EONIS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\stockbatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\stockbatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\customerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\customerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\adminprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\adminprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\stockbatchdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\stockbatchdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\registercustomerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\registercustomerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\registeradmindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\registeradmindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\productdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\productdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\customerprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\customerprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\dtos\\adminprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\dtos\\adminprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\data\\pharmacycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\data\\pharmacycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\controllers\\stockbatchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\controllers\\stockbatchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\eonis.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\eonis.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\eonis.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\eonis.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004164037_InitPharmacyDb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:EONIS\\Migrations\\20251004164037_InitPharmacyDb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004154729_AddProfiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:EONIS\\Migrations\\20251004154729_AddProfiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004095920_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:EONIS\\Migrations\\20251004095920_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\eonis.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\eonis.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\migrations\\20251004164535_initpharmacydb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\migrations\\20251004164535_initpharmacydb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "EONIS\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:39:53.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CustomerProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\CustomerProfile.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\CustomerProfile.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\CustomerProfile.cs",
+              "RelativeToolTip": "EONIS\\Models\\CustomerProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:40:49.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Order.cs",
+              "RelativeToolTip": "EONIS\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:39:59.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\OrderItem.cs",
+              "RelativeToolTip": "EONIS\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:41:00.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Payment.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\Payment.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Payment.cs",
+              "RelativeToolTip": "EONIS\\Models\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-05T14:20:57.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Product.cs",
+              "RelativeToolTip": "EONIS\\Models\\Product.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAswBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T09:52:03.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StockBatch.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\StockBatch.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\StockBatch.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\StockBatch.cs",
+              "RelativeToolTip": "EONIS\\Models\\StockBatch.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:02:53.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "EONIS\\Services\\OrderService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Services\\OrderService.cs",
+              "RelativeToolTip": "EONIS\\Services\\OrderService.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:53:16.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Program.cs",
+              "RelativeDocumentMoniker": "EONIS\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Program.cs",
+              "RelativeToolTip": "EONIS\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T09:53:04.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\appsettings.json",
+              "RelativeDocumentMoniker": "EONIS\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\appsettings.json",
+              "RelativeToolTip": "EONIS\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-04T09:47:12.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\AdminProfile.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\AdminProfile.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\AdminProfile.cs",
+              "RelativeToolTip": "EONIS\\Models\\AdminProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:41:30.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "StockBatchDtos.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\StockBatchDtos.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\StockBatchDtos.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\StockBatchDtos.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\StockBatchDtos.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:27:52.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RegisterCustomerDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\RegisterCustomerDto.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\RegisterCustomerDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\RegisterCustomerDto.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\RegisterCustomerDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:48:38.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegisterAdminDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\RegisterAdminDto.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\RegisterAdminDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\RegisterAdminDto.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\RegisterAdminDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:49:01.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProductDtos.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\ProductDtos.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\ProductDtos.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\ProductDtos.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\ProductDtos.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAUwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:27:21.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "OrderDtos.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\OrderDtos.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\OrderDtos.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\OrderDtos.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\OrderDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:50:01.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OrderDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\OrderDto.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\OrderDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\OrderDto.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\OrderDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:44:05.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\LoginDto.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\LoginDto.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:51:53.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CustomerProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\CustomerProfileDto.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\CustomerProfileDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\CustomerProfileDto.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\CustomerProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:44:10.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AdminProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\AdminProfileDto.cs",
+              "RelativeDocumentMoniker": "EONIS\\DTOs\\AdminProfileDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\AdminProfileDto.cs",
+              "RelativeToolTip": "EONIS\\DTOs\\AdminProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:44:44.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "PharmacyContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Data\\PharmacyContext.cs",
+              "RelativeDocumentMoniker": "EONIS\\Data\\PharmacyContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Data\\PharmacyContext.cs",
+              "RelativeToolTip": "EONIS\\Data\\PharmacyContext.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAIwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T09:50:21.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "StockBatchController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\StockBatchController.cs",
+              "RelativeDocumentMoniker": "EONIS\\Controllers\\StockBatchController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\StockBatchController.cs",
+              "RelativeToolTip": "EONIS\\Controllers\\StockBatchController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAowGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:07:35.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ProfilesController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\ProfilesController.cs",
+              "RelativeDocumentMoniker": "EONIS\\Controllers\\ProfilesController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\ProfilesController.cs",
+              "RelativeToolTip": "EONIS\\Controllers\\ProfilesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:53:02.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "EONIS\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "EONIS\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAowIUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T10:07:05.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "EONIS\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "EONIS\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:48:26.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "EONIS\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "EONIS\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAkwFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:50:52.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EONIS.csproj",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.csproj",
+              "RelativeDocumentMoniker": "EONIS\\EONIS.csproj",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.csproj",
+              "RelativeToolTip": "EONIS\\EONIS.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-04T09:49:28.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "EONIS.http",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.http",
+              "RelativeDocumentMoniker": "EONIS\\EONIS.http",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.http",
+              "RelativeToolTip": "EONIS\\EONIS.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-10-05T14:12:37.199Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "20251004164037_InitPharmacyDb.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004164037_InitPharmacyDb.cs",
+              "RelativeDocumentMoniker": "EONIS\\Migrations\\20251004164037_InitPharmacyDb.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004164037_InitPharmacyDb.cs",
+              "RelativeToolTip": "EONIS\\Migrations\\20251004164037_InitPharmacyDb.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T16:40:38.342Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "20251004164535_InitPharmacyDb.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004164535_InitPharmacyDb.cs",
+              "RelativeDocumentMoniker": "EONIS\\Migrations\\20251004164535_InitPharmacyDb.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004164535_InitPharmacyDb.cs",
+              "RelativeToolTip": "EONIS\\Migrations\\20251004164535_InitPharmacyDb.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T16:45:36.084Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "20251004154729_AddProfiles.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004154729_AddProfiles.cs",
+              "RelativeDocumentMoniker": "EONIS\\Migrations\\20251004154729_AddProfiles.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004154729_AddProfiles.cs",
+              "RelativeToolTip": "EONIS\\Migrations\\20251004154729_AddProfiles.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:47:32.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20251004095920_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004095920_InitialCreate.cs",
+              "RelativeDocumentMoniker": "EONIS\\Migrations\\20251004095920_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004095920_InitialCreate.cs",
+              "RelativeToolTip": "EONIS\\Migrations\\20251004095920_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T09:59:21.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "EONIS",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.csproj",
+              "RelativeDocumentMoniker": "EONIS\\EONIS.csproj",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.csproj",
+              "RelativeToolTip": "EONIS\\EONIS.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-04T09:45:26.59Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
