@@ -28,6 +28,15 @@ namespace EONIS
 
             builder.Services.AddScoped<OrderService>();
 
+            builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+            builder.Services.AddScoped<IStripePaymentService, StripePaymentService>();
+
+            var secret = builder.Configuration["Stripe:SecretKey"];
+            if (string.IsNullOrWhiteSpace(secret))
+                throw new InvalidOperationException("Stripe:SecretKey nije postavljen u konfiguraciji (appsettings/UserSecrets).");
+
+            StripeConfiguration.ApiKey = secret;
+
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

@@ -1,20 +1,20 @@
 ﻿namespace EONIS.DTOs
 {
-    // dodaje vise itema u jedan order
+
     public class OrderCreateDto
     {
         public string? CustomerEmail { get; set; }
         public List<OrderItemCreateDto> Items { get; set; } = new();
     }
 
-    // dodaje stavku
+
     public class OrderItemCreateDto
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }
     }
 
-    // item koji se vraca klijentu
+
     public class OrderItemReadDto
     {
         public int Id { get; set; }

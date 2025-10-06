@@ -117,7 +117,7 @@ namespace EONIS.Controllers
             return NoContent();
         }
 
-        [HttpGet]
+        [HttpGet("list")]
         public async Task<ActionResult<PagedResultDto<ProductListItemDto>>> List(
              [FromQuery] int page = 1,
              [FromQuery] int pageSize = 10,

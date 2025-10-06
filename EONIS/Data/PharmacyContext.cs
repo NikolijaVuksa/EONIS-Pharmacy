@@ -16,13 +16,12 @@ namespace EONIS.Data
 
         public DbSet<CustomerProfile> Customers => Set<CustomerProfile>();
         public DbSet<AdminProfile> Admins => Set<AdminProfile>();
-        public DbSet<Payment> Payments => Set<Payment>();
-
+        public DbSet<Payment> Payments { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Product>()
                 .Property(p => p.BasePrice)
                 .HasColumnType("decimal(18,2)");
@@ -60,7 +59,6 @@ namespace EONIS.Data
                 .HasForeignKey<AdminProfile>(a => a.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

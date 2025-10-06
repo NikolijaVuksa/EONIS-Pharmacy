@@ -8,7 +8,7 @@ namespace EONIS.Models
         public int Id { get; set; }
 
         [MaxLength(32)]
-        public string Status { get; set; } = "Draft"; 
+        public string Status { get; set; } = "Pending"; 
 
         [EmailAddress]
         public string? CustomerEmail { get; set; }

@@ -179,21 +179,47 @@
   },
   {
     "ContainingType": "EONIS.Controllers.PaymentsController",
-    "Method": "CreatePaymentIntent",
-    "RelativePath": "api/Payments/create-intent",
+    "Method": "ConfirmPayment",
+    "RelativePath": "api/Payments/confirm",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "EONIS.DTOs.Payments.PaymentRequestDto",
-        "IsRequired": true
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "EONIS.DTOs.Payments.PaymentResponseDto",
+        "Type": "EONIS.DTOs.Payments.PaymentCreateResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EONIS.Controllers.PaymentsController",
+    "Method": "CreatePayment",
+    "RelativePath": "api/Payments/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EONIS.DTOs.Payments.PaymentCreateResponseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -240,62 +266,6 @@
     "ReturnTypes": [
       {
         "Type": "EONIS.DTOs.ProductReadDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "EONIS.Controllers.ProductsController",
-    "Method": "List",
-    "RelativePath": "api/Products",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "page",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "q",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "sortBy",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "dir",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "category",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "rx",
-        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "EONIS.DTOs.PagedResultDto\u00601[[EONIS.DTOs.ProductListItemDto, EONIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -504,6 +474,62 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "EONIS.Controllers.ProductsController",
+    "Method": "List",
+    "RelativePath": "api/Products/list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "q",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sortBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "dir",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "rx",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EONIS.DTOs.PagedResultDto\u00601[[EONIS.DTOs.ProductListItemDto, EONIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "EONIS.Controllers.ProfilesController",
     "Method": "UpdateAdmin",
     "RelativePath": "api/Profiles/admin",
@@ -534,26 +560,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EONIS.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[EONIS.WeatherForecast, EONIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]
