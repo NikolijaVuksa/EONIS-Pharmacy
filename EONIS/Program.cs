@@ -1,6 +1,6 @@
 ﻿using EONIS.Data;
 using EONIS.Models;
-using EONIS.Services;   // namespace za tvoj PharmacyContext
+using EONIS.Services;  
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -23,8 +23,8 @@ namespace EONIS
                     builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            //builder.Services.AddEndpointsApiExplorer();
+            //builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<OrderService>();
 
@@ -33,9 +33,42 @@ namespace EONIS
 
             var secret = builder.Configuration["Stripe:SecretKey"];
             if (string.IsNullOrWhiteSpace(secret))
-                throw new InvalidOperationException("Stripe:SecretKey nije postavljen u konfiguraciji (appsettings/UserSecrets).");
+                throw new InvalidOperationException("Stripe:SecretKey nije postavljen");
 
             StripeConfiguration.ApiKey = secret;
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new() { Title = "EONIS API", Version = "v1" });
+
+                // JWT konfiguracija za Swagger
+                c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Description = "Unesi token ovako: Bearer {tvoj JWT token}"
+                });
+
+                c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+                },
+                    Array.Empty<string>()
+                }
+                });
+            });
+
 
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>

@@ -15,7 +15,7 @@ namespace EONIS.Controllers
             _service = service;
         }
 
-        /// <summary>Kreira PaymentIntent i vraća Stripe podatke.</summary>
+        //intent i vraca stripe odatke
         [HttpPost("create")]
         public async Task<ActionResult<PaymentCreateResponseDto>> CreatePayment([FromQuery] int orderId)
         {
@@ -23,7 +23,7 @@ namespace EONIS.Controllers
             return Ok(result);
         }
 
-        /// <summary>Simulira uspešnu uplatu (test bez webhook-a).</summary>
+        //test bez webhook za uspesnu uplatu
         [HttpPost("confirm")]
         public async Task<ActionResult<PaymentCreateResponseDto>> ConfirmPayment([FromQuery] int orderId)
         {

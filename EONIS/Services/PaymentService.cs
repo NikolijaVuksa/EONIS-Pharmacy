@@ -24,7 +24,6 @@ namespace EONIS.Services
             _cfg = cfg.Value;
         }
 
-        // 🔹 1. Kreira Stripe PaymentIntent na osnovu izračunate vrednosti porudžbine
         public async Task<PaymentCreateResponseDto> CreatePaymentIntentAsync(int orderId)
         {
             var order = await _db.Orders
@@ -33,9 +32,8 @@ namespace EONIS.Services
                 .FirstOrDefaultAsync(o => o.Id == orderId);
 
             if (order == null)
-                throw new InvalidOperationException("Porudžbina nije pronađena.");
+                throw new InvalidOperationException("Order not found.");
 
-            // Izračunavanje ukupne sume
             decimal totalRsd = order.Items.Sum(i => i.Product.BasePrice * i.Quantity);
             long totalPara = (long)(totalRsd * 100);
 
@@ -50,7 +48,7 @@ namespace EONIS.Services
             var service = new PaymentIntentService();
             var intent = await service.CreateAsync(options);
 
-            // Upis u bazu
+            //dodaje u bazu
             var payment = new Payment
             {
                 OrderId = order.Id,
@@ -76,12 +74,12 @@ namespace EONIS.Services
             };
         }
 
-        // 🔹 2. Simulira uspešno plaćanje (bez webhooka)
+        // bez webhook
         public async Task<PaymentCreateResponseDto> ConfirmPaymentAsync(int orderId)
         {
             var payment = await _db.Payments.FirstOrDefaultAsync(p => p.OrderId == orderId);
             if (payment == null)
-                throw new InvalidOperationException("Plaćanje nije pronađeno za ovu porudžbinu.");
+                throw new InvalidOperationException("Payment not found for this.");
 
             payment.Status = "Succeeded";
 

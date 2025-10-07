@@ -18,6 +18,10 @@ namespace EONIS.Data
         public DbSet<AdminProfile> Admins => Set<AdminProfile>();
         public DbSet<Payment> Payments { get; set; } = default!;
 
+        public DbSet<PrescriptionReservation> Reservations => Set<PrescriptionReservation>();
+        public DbSet<Therapy> Therapies => Set<Therapy>();
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -58,6 +62,31 @@ namespace EONIS.Data
                 .WithOne(u => u.AdminProfile)
                 .HasForeignKey<AdminProfile>(a => a.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PrescriptionReservation>()
+                .HasOne(r => r.Product)
+                .WithMany()
+                .HasForeignKey(r => r.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PrescriptionReservation>()
+                .HasOne(r => r.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Therapy>()
+                .HasOne(t => t.Product)
+                .WithMany()
+                .HasForeignKey(t => t.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Therapy>()
+                .HasOne(t => t.User)
+                .WithMany()
+                .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
         }
     }
