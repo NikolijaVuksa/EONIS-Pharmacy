@@ -148,12 +148,48 @@ namespace EONIS.Controllers
         [HttpPost("{id:int}/approve")]
         public async Task<IActionResult> Approve(int id)
         {
-            var r = await _db.Reservations.FirstOrDefaultAsync(x => x.Id == id);
-            if (r == null) return NotFound();
-            r.Status = "Approved";
-            await _db.SaveChangesAsync();
-            return Ok();
+            var reservation = await _db.Reservations
+                .Include(r => r.Product)
+                .Include(r => r.User)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            if (reservation == null) return NotFound("Reservation not found.");
+
+            if (reservation.Status == "Approved")
+                return BadRequest("Reservation already approved.");
+
+            reservation.Status = "Approved";
+
+           
+            var order = new Order
+            {
+                CustomerEmail = reservation.User.Email,
+                CreatedAt = DateTime.UtcNow,
+                ReservationId = reservation.Id,
+                Status = "Created",
+                Items = new List<OrderItem>
+        {
+            new OrderItem
+            {
+                ProductId = reservation.ProductId,
+                Quantity = reservation.Quantity,
+                UnitPrice = reservation.Product.PriceWithVat
+            }
         }
+            };
+
+            _db.Orders.Add(order);
+            await _db.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Reservation approved and added to user's orders.",
+                reservationId = reservation.Id,
+                orderId = order.Id,
+                user = reservation.User.Email
+            });
+        }
+
 
         [Authorize(Roles = "Admin")]
         [HttpPost("{id:int}/reject")]

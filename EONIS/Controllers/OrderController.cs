@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using EONIS.Data;
-using EONIS.Models;
+﻿using EONIS.Data;
 using EONIS.DTOs;
+using EONIS.Models;
 using EONIS.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EONIS.Controllers
 {
@@ -100,7 +101,7 @@ namespace EONIS.Controllers
             return Ok(Map(order));
         }
 
-        // (finalizuj -> FIFO skini zalihe)
+        //skini sa zaliha
         [HttpPost("{id:int}/place")]
         public async Task<ActionResult<OrderReadDto>> Place(int id)
         {
@@ -174,6 +175,23 @@ namespace EONIS.Controllers
             return Ok(Map(order));
         }
 
+        [Authorize(Roles = "Customer")]
+        [HttpGet("my-orders")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetMyOrders()
+        {
+            var email = User.Identity?.Name;
+            if (email == null)
+                return Unauthorized();
+
+            var orders = await _db.Orders
+                .Include(o => o.Items)
+                .ThenInclude(oi => oi.Product)
+                .Where(o => o.CustomerEmail == email)
+                .OrderByDescending(o => o.CreatedAt)
+                .ToListAsync();
+
+            return Ok(orders);
+        }
 
 
     }

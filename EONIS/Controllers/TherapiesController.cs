@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿// EONIS/Controllers/TherapiesController.cs
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EONIS.Data;
@@ -24,26 +26,33 @@ namespace EONIS.Controllers
             _userManager = userManager;
         }
 
+        // kreira terapiju iz recepta
         [Authorize(Roles = "Customer")]
-        [HttpPost]
-        public async Task<ActionResult<TherapyReadDto>> Create([FromBody] TherapyCreateDto dto)
+        [HttpPost("from-prescription")]
+        public async Task<ActionResult<TherapyReadDto>> CreateFromPrescription([FromBody] TherapyFromPrescriptionDto dto)
         {
             var email = User.Identity?.Name;
             if (email == null) return Unauthorized();
-            var user = await _userManager.FindByNameAsync(email);
-            if (user == null) return NotFound("User not found");
+
+            var me = await _userManager.FindByNameAsync(email);
+            if (me == null) return NotFound("User not found");
 
             var product = await _db.Products.FindAsync(dto.ProductId);
             if (product == null) return NotFound("Product not found");
+            if (!product.Rx) return BadRequest("Therapy can be created only for Rx products.");
 
             var t = new Therapy
             {
-                UserId = user.Id,
+                UserId = me.Id,
                 ProductId = dto.ProductId,
+                Quantity = dto.Quantity,
                 Dosage = dto.Dosage,
+                DosageUnit = dto.DosageUnit,
                 Frequency = dto.Frequency,
-                StartDate = dto.StartDate,
-                EndDate = dto.EndDate
+                DurationDays = dto.DurationDays,
+                PrescriptionCode = dto.PrescriptionCode,
+                DoctorName = dto.DoctorName,
+                Status = "Pending"
             };
 
             _db.Therapies.Add(t);
@@ -54,13 +63,19 @@ namespace EONIS.Controllers
                 Id = t.Id,
                 ProductId = t.ProductId,
                 ProductName = product.Name,
+                Quantity = t.Quantity,
                 Dosage = t.Dosage,
+                DosageUnit = t.DosageUnit,
                 Frequency = t.Frequency,
-                StartDate = t.StartDate,
-                EndDate = t.EndDate
+                DurationDays = t.DurationDays,
+                PrescriptionCode = t.PrescriptionCode,
+                DoctorName = t.DoctorName,
+                Status = t.Status,
+                CreatedAt = t.CreatedAt
             });
         }
 
+       
         [Authorize(Roles = "Customer,Admin")]
         [HttpGet("{id:int}")]
         public async Task<ActionResult<TherapyReadDto>> Get(int id)
@@ -81,11 +96,73 @@ namespace EONIS.Controllers
                 Id = t.Id,
                 ProductId = t.ProductId,
                 ProductName = t.Product?.Name ?? string.Empty,
+                Quantity = t.Quantity,
                 Dosage = t.Dosage,
+                DosageUnit = t.DosageUnit,
                 Frequency = t.Frequency,
-                StartDate = t.StartDate,
-                EndDate = t.EndDate
+                DurationDays = t.DurationDays,
+                PrescriptionCode = t.PrescriptionCode,
+                DoctorName = t.DoctorName,
+                Status = t.Status,
+                CreatedAt = t.CreatedAt
             });
+        }
+
+        // kad admin odobri kreira se order
+        [Authorize(Roles = "Admin")]
+        [HttpPost("{id:int}/approve")]
+        public async Task<IActionResult> ApproveAndCreateOrder(int id)
+        {
+            var therapy = await _db.Therapies
+                .Include(t => t.Product)
+                .Include(t => t.User)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (therapy == null) return NotFound("Therapy not found.");
+            if (therapy.Status == "Approved") return BadRequest("Therapy already approved.");
+            if (therapy.Product == null || !therapy.Product.Rx) return BadRequest("Only Rx therapies can be approved.");
+
+            therapy.Status = "Approved";
+
+         
+            var order = new Order
+            {
+                CustomerEmail = therapy.User!.Email,
+                CreatedAt = DateTime.UtcNow,
+                Status = "Created",
+                Items = new List<OrderItem>
+                {
+                    new OrderItem
+                    {
+                        ProductId = therapy.ProductId,
+                        Quantity = therapy.Quantity,
+                        UnitPrice = therapy.Product.PriceWithVat
+                    }
+                }
+            };
+
+            _db.Orders.Add(order);
+            await _db.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Therapy approved. Order created for the user.",
+                therapyId = therapy.Id,
+                orderId = order.Id
+            });
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("{id:int}/reject")]
+        public async Task<IActionResult> Reject(int id)
+        {
+            var therapy = await _db.Therapies.FindAsync(id);
+            if (therapy == null) return NotFound();
+            if (therapy.Status == "Approved") return BadRequest("Cannot reject an approved therapy.");
+
+            therapy.Status = "Rejected";
+            await _db.SaveChangesAsync();
+            return Ok();
         }
 
         [Authorize(Roles = "Customer")]
@@ -97,10 +174,9 @@ namespace EONIS.Controllers
             var me = await _userManager.FindByNameAsync(email);
             if (me == null) return NotFound("User not found");
 
-            var list = await _db.Therapies
-                .Include(t => t.Product)
+            var list = await _db.Therapies.Include(t => t.Product)
                 .Where(t => t.UserId == me.Id)
-                .OrderByDescending(t => t.StartDate)
+                .OrderByDescending(t => t.CreatedAt)
                 .ToListAsync();
 
             return Ok(list.Select(t => new TherapyReadDto
@@ -108,32 +184,15 @@ namespace EONIS.Controllers
                 Id = t.Id,
                 ProductId = t.ProductId,
                 ProductName = t.Product?.Name ?? string.Empty,
+                Quantity = t.Quantity,
                 Dosage = t.Dosage,
+                DosageUnit = t.DosageUnit,
                 Frequency = t.Frequency,
-                StartDate = t.StartDate,
-                EndDate = t.EndDate
-            }));
-        }
-
-        [Authorize(Roles = "Admin")]
-        [HttpGet("all")]
-        public async Task<ActionResult<IEnumerable<TherapyReadDto>>> ListAll()
-        {
-            var list = await _db.Therapies
-                .Include(t => t.Product)
-                .Include(t => t.User)
-                .OrderByDescending(t => t.StartDate)
-                .ToListAsync();
-
-            return Ok(list.Select(t => new TherapyReadDto
-            {
-                Id = t.Id,
-                ProductId = t.ProductId,
-                ProductName = t.Product?.Name ?? string.Empty,
-                Dosage = t.Dosage,
-                Frequency = t.Frequency,
-                StartDate = t.StartDate,
-                EndDate = t.EndDate
+                DurationDays = t.DurationDays,
+                PrescriptionCode = t.PrescriptionCode,
+                DoctorName = t.DoctorName,
+                Status = t.Status,
+                CreatedAt = t.CreatedAt
             }));
         }
     }

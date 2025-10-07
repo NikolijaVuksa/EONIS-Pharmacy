@@ -87,6 +87,13 @@ namespace EONIS.Data
                 .HasForeignKey(t => t.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Reservation)
+                .WithMany()
+                .HasForeignKey(o => o.ReservationId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+
 
         }
     }
