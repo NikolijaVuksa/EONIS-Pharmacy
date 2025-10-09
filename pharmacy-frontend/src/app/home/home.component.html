@@ -1,0 +1,25 @@
+<section class="hero">
+  <div class="hero-content">
+    <h1>Dobrodošli u Apoteku</h1>
+    <p>Brza, sigurna i pouzdana kupovina lekova i suplemenata.</p>
+  </div>
+</section>
+
+<section class="products-section">
+  <h2>Naša ponuda</h2>
+
+  <div class="products-grid">
+    <div *ngFor="let prod of products" class="product-card">
+      <h3>{{ prod.name }}</h3>
+      <p>{{ prod.description }}</p>
+      <p class="price">
+        {{ prod.price | currency : "RSD" : "symbol" : "1.0-0" }}
+      </p>
+      <button>Dodaj u korpu</button>
+    </div>
+  </div>
+
+  <div *ngIf="products.length === 0" class="no-products">
+    <p>Trenutno nema dostupnih proizvoda.</p>
+  </div>
+</section>

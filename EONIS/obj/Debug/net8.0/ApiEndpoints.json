@@ -794,6 +794,16 @@
     ]
   },
   {
+    "ContainingType": "EONIS.Controllers.TestController",
+    "Method": "Ping",
+    "RelativePath": "api/Test/ping",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "EONIS.Controllers.TherapiesController",
     "Method": "GetMyTherapies",
     "RelativePath": "api/Therapies",

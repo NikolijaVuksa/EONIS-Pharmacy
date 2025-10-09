@@ -1341,6 +1341,18 @@
         }
       }
     },
+    "/api/Test/ping": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Therapies/from-prescription": {
       "post": {
         "tags": [

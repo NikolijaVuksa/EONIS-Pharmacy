@@ -1,0 +1,44 @@
+<section class="customer-dashboard">
+  <h2>Dobrodošli, {{ userEmail }}</h2>
+
+  <div class="cards-container">
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h3>Moje porudžbine</h3>
+      <ul *ngIf="orders.length; else noOrders">
+        <li *ngFor="let o of orders">
+          <strong>ID:</strong> {{ o.id }} | <strong>Status:</strong>
+          {{ o.status }} | <strong>Datum:</strong>
+          {{ o.createdAt | date : "short" }}
+        </li>
+      </ul>
+      <ng-template #noOrders><p>Nema porudžbina.</p></ng-template>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💊</div>
+      <h3>Moje terapije</h3>
+      <ul *ngIf="therapies.length; else noTherapies">
+        <li *ngFor="let t of therapies">
+          {{ t.productName }} – {{ t.status }} ({{
+            t.createdAt | date : "short"
+          }})
+        </li>
+      </ul>
+      <ng-template #noTherapies><p>Nema terapija.</p></ng-template>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🩺</div>
+      <h3>Moje rezervacije</h3>
+      <ul *ngIf="reservations.length; else noReservations">
+        <li *ngFor="let r of reservations">
+          {{ r.productName }} – {{ r.status }} ({{
+            r.createdAt | date : "short"
+          }})
+        </li>
+      </ul>
+      <ng-template #noReservations><p>Nema rezervacija.</p></ng-template>
+    </div>
+  </div>
+</section>

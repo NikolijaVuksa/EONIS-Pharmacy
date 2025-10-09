@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EONIS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d8c848695409848b3f0e471f30a3401762d478f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4914a85ef8ad6fb4477e2e480df223c8f5407c07")]
 [assembly: System.Reflection.AssemblyProductAttribute("EONIS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EONIS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

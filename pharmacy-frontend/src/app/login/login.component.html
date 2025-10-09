@@ -1,0 +1,32 @@
+<section class="login-section">
+  <div class="login-box">
+    <h2>Prijava na nalog</h2>
+    <p>Pristupite svom profilu i porudžbinama</p>
+
+    <form (ngSubmit)="onLogin()">
+      <label for="email">Email adresa</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+      />
+
+      <label for="password">Lozinka</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+
+      <button type="submit">Prijavi se</button>
+
+      <div class="error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,7 +1,4 @@
-﻿// EONIS/DTOs/TherapyFromPrescriptionDto.cs
-using System;
-
-namespace EONIS.DTOs
+﻿namespace EONIS.DTOs
 {
     public class TherapyFromPrescriptionDto
     {
