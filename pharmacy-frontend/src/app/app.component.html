@@ -21,6 +21,10 @@
         <a routerLink="/login" routerLinkActive="active">Prijava</a>
       </ng-container>
 
+      <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+        Korpa ({{ cartItemCount }})
+      </a>
+
       <ng-container *ngIf="(isLoggedIn$ | async) === true">
         <a routerLink="/dashboard" routerLinkActive="active">Profil</a>
         <a (click)="onLogout()" class="logout">Odjava</a>

@@ -101,11 +101,13 @@ namespace EONIS.Controllers
 
             var roles = await _userManager.GetRolesAsync(user);
 
+          
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName!),
-                new Claim(ClaimTypes.Email, user.Email!),
-                new Claim("FullName", user.FullName ?? "")
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id),              
+                new Claim(JwtRegisteredClaimNames.Email, user.Email ?? ""),    
+                new Claim("FullName", user.FullName ?? ""),
+                new Claim(ClaimTypes.Name, user.UserName ?? "")
             };
             claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
 
@@ -120,7 +122,16 @@ namespace EONIS.Controllers
                 signingCredentials: creds
             );
 
-            return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return Ok(new
+            {
+                token = tokenString,
+                email = user.Email,
+                fullName = user.FullName,
+                roles
+            });
         }
+
     }
 }

@@ -1,29 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
+// ----- tvoje komponente -----
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 import { CustomerDashboardComponent } from './dashboards/customer-dashboard/customer-dashboard.component';
-import { CommonModule, DatePipe } from '@angular/common';
+
+// ----- tvoji servisi -----
+import { ProductService } from './services/product.service';
+import { CartService } from './services/cart.service';
+import { OrderService } from './services/order.service';
+import { PaymentService } from './services/payment.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    CartComponent,
     CustomerDashboardComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
     CommonModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    ProductService,
+    CartService,
+    OrderService,
+    PaymentService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

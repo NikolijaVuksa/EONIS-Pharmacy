@@ -7,7 +7,6 @@ export class AuthService {
   private authUrl = 'https://localhost:7201/api/auth';
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(this.hasToken());
-  /** Na ovo se kači UI (navbar) */
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -44,6 +43,25 @@ export class AuthService {
     try {
       const p = JSON.parse(atob(t.split('.')[1]));
       return p.FullName || p.email || 'Korisnik';
+    } catch {
+      return null;
+    }
+  }
+
+  getEmail(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return (
+        payload.email ||
+        payload.Email ||
+        payload[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
+        ] ||
+        payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] ||
+        null
+      );
     } catch {
       return null;
     }

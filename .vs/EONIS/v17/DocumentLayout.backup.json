@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\EONIS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -151,10 +159,6 @@
       "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -165,10 +169,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|solutionrelative:eonis\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4F697B64-6616-4544-BD1C-37AFFF658BA2}|EONIS\\EONIS.csproj|c:\\users\\admin\\source\\repos\\eonis\\eonis\\models\\adminprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -222,20 +222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "EONIS\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "EONIS\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAH0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:50:52.013Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ProfilesController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\ProfilesController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\ProfilesController.cs",
@@ -243,12 +230,11 @@
               "RelativeToolTip": "EONIS\\Controllers\\ProfilesController.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAYwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:53:02.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:53:02.017Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "TherapiesController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\TherapiesController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\TherapiesController.cs",
@@ -256,12 +242,11 @@
               "RelativeToolTip": "EONIS\\Controllers\\TherapiesController.cs",
               "ViewState": "AgIAAKwAAAAAAAAAAAAUwMYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:14:00.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:14:00.471Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "OrderController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\OrderController.cs",
@@ -269,12 +254,11 @@
               "RelativeToolTip": "EONIS\\Controllers\\OrderController.cs",
               "ViewState": "AgIAAK0AAAAAAAAAAAAIwMYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:48:26.921Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:48:26.921Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\ApplicationUser.cs",
@@ -282,12 +266,11 @@
               "RelativeToolTip": "EONIS\\Models\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:39:53.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:39:53.901Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CustomerProfile.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\CustomerProfile.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\CustomerProfile.cs",
@@ -295,25 +278,36 @@
               "RelativeToolTip": "EONIS\\Models\\CustomerProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:40:49.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:40:49.368Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Order.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\Order.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Order.cs",
               "RelativeToolTip": "EONIS\\Models\\Order.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAYwBgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA0wBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:39:59.872Z",
+              "WhenOpened": "2025-10-04T11:39:59.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\appsettings.json",
+              "RelativeDocumentMoniker": "EONIS\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\appsettings.json",
+              "RelativeToolTip": "EONIS\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-04T09:47:12.556Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ReservationsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\ReservationsController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\ReservationsController.cs",
@@ -321,12 +315,35 @@
               "RelativeToolTip": "EONIS\\Controllers\\ReservationsController.cs",
               "ViewState": "AgIAALQAAAAAAAAAAAAIwM0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:12:18.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:12:18.422Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "EONIS\\Models\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\OrderItem.cs",
+              "RelativeToolTip": "EONIS\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:41:00.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "EONIS\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "EONIS\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAIBJwH0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:50:52.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "TestController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\TestController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\TestController.cs",
@@ -334,25 +351,23 @@
               "RelativeToolTip": "EONIS\\Controllers\\TestController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T15:49:30.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-07T15:49:30.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Program.cs",
               "RelativeDocumentMoniker": "EONIS\\Program.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Program.cs",
               "RelativeToolTip": "EONIS\\Program.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAAAI4AAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAIBJwI4AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T09:53:04.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T09:53:04.569Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "EONIS.csproj",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.csproj",
               "RelativeDocumentMoniker": "EONIS\\EONIS.csproj",
@@ -360,12 +375,11 @@
               "RelativeToolTip": "EONIS\\EONIS.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAQwAkAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-04T09:49:28.63Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T09:49:28.63Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "TherapyFromPrescriptionDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\TherapyFromPrescriptionDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\TherapyFromPrescriptionDto.cs",
@@ -373,12 +387,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\TherapyFromPrescriptionDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T11:52:10.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-07T11:52:10.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "StockBatchDtos.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\StockBatchDtos.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\StockBatchDtos.cs",
@@ -386,12 +399,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\StockBatchDtos.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:27:52.257Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:27:52.257Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "ReservationDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\ReservationDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\ReservationDto.cs",
@@ -399,12 +411,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\ReservationDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:10:21.49Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:10:21.49Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "PharmacyContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\PharmacyContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "EONIS\\Migrations\\PharmacyContextModelSnapshot.cs",
@@ -412,12 +423,11 @@
               "RelativeToolTip": "EONIS\\Migrations\\PharmacyContextModelSnapshot.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAQwA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T20:52:22.779Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-09T20:52:22.779Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "RegisterCustomerDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\RegisterCustomerDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\RegisterCustomerDto.cs",
@@ -425,12 +435,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\RegisterCustomerDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:48:38.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:48:38.331Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "RegisterAdminDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\RegisterAdminDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\RegisterAdminDto.cs",
@@ -438,12 +447,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\RegisterAdminDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:49:01.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:49:01.258Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "ProductDtos.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\ProductDtos.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\ProductDtos.cs",
@@ -451,12 +459,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\ProductDtos.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:27:21.082Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:27:21.082Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "PaymentCreatedResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\PaymentCreatedResponseDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\PaymentCreatedResponseDto.cs",
@@ -464,12 +471,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\PaymentCreatedResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T21:37:28.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T21:37:28.833Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "OrderDtos.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\OrderDtos.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\OrderDtos.cs",
@@ -477,12 +483,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\OrderDtos.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:50:01.073Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:50:01.073Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "OrderDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\OrderDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\OrderDto.cs",
@@ -490,12 +495,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\OrderDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:44:05.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:44:05.555Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\LoginDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\LoginDto.cs",
@@ -503,12 +507,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\LoginDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:51:53.081Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:51:53.081Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "CustomerProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\CustomerProfileDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\CustomerProfileDto.cs",
@@ -516,12 +519,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\CustomerProfileDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:44:10.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:44:10.912Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "AdminProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\DTOs\\AdminProfileDto.cs",
               "RelativeDocumentMoniker": "EONIS\\DTOs\\AdminProfileDto.cs",
@@ -529,12 +531,11 @@
               "RelativeToolTip": "EONIS\\DTOs\\AdminProfileDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:44:44.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:44:44.249Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "PharmacyContext.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Data\\PharmacyContext.cs",
               "RelativeDocumentMoniker": "EONIS\\Data\\PharmacyContext.cs",
@@ -542,12 +543,11 @@
               "RelativeToolTip": "EONIS\\Data\\PharmacyContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T09:50:21.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T09:50:21.291Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\ProductsController.cs",
@@ -555,12 +555,11 @@
               "RelativeToolTip": "EONIS\\Controllers\\ProductsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T10:07:05.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T10:07:05.776Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "PaymentsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\PaymentsController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\PaymentsController.cs",
@@ -568,12 +567,11 @@
               "RelativeToolTip": "EONIS\\Controllers\\PaymentsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T20:34:33.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T20:34:33.153Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "AdminUsersController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AdminUsersController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\AdminUsersController.cs",
@@ -581,12 +579,11 @@
               "RelativeToolTip": "EONIS\\Controllers\\AdminUsersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:35:28.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:35:28.785Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "AdminPaymentsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\AdminPaymentsController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\AdminPaymentsController.cs",
@@ -594,25 +591,23 @@
               "RelativeToolTip": "EONIS\\Controllers\\AdminPaymentsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:34:48.278Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:34:48.278Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "Therapy.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Therapy.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\Therapy.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Therapy.cs",
               "RelativeToolTip": "EONIS\\Models\\Therapy.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAywBQAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAADwvxQAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:09:19.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:09:19.19Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "PrescriptionReservation.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\PrescriptionReservation.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\PrescriptionReservation.cs",
@@ -620,8 +615,7 @@
               "RelativeToolTip": "EONIS\\Models\\PrescriptionReservation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:08:26.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:08:26.297Z"
             },
             {
               "$type": "Document",
@@ -633,12 +627,11 @@
               "RelativeToolTip": "EONIS\\Migrations\\20251007115532_TherapyFromPrescription_Workflow.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T11:55:32.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-07T11:55:32.766Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "StripeSettings.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\StripeSettings.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\StripeSettings.cs",
@@ -646,12 +639,11 @@
               "RelativeToolTip": "EONIS\\Models\\StripeSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T20:31:17.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T20:31:17.316Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "StockBatchController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Controllers\\StockBatchController.cs",
               "RelativeDocumentMoniker": "EONIS\\Controllers\\StockBatchController.cs",
@@ -659,12 +651,11 @@
               "RelativeToolTip": "EONIS\\Controllers\\StockBatchController.cs",
               "ViewState": "AgIAAF0AAAAAAAAAAAAowGsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:07:35.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:07:35.67Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "PaymentService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Services\\PaymentService.cs",
               "RelativeDocumentMoniker": "EONIS\\Services\\PaymentService.cs",
@@ -672,8 +663,7 @@
               "RelativeToolTip": "EONIS\\Services\\PaymentService.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAowBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T20:32:47.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T20:32:47.882Z"
             },
             {
               "$type": "Document",
@@ -685,12 +675,11 @@
               "RelativeToolTip": "EONIS\\Migrations\\20251006222030_AddPrescriptionsAndTherapies.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T22:20:31.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T22:20:31.004Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "20251004164535_InitPharmacyDb.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251004164535_InitPharmacyDb.cs",
               "RelativeDocumentMoniker": "EONIS\\Migrations\\20251004164535_InitPharmacyDb.cs",
@@ -698,12 +687,11 @@
               "RelativeToolTip": "EONIS\\Migrations\\20251004164535_InitPharmacyDb.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T16:45:36.084Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T16:45:36.084Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\Payment.cs",
@@ -711,12 +699,11 @@
               "RelativeToolTip": "EONIS\\Models\\Payment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-05T14:20:57.137Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-05T14:20:57.137Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "20251006212537_AddPaymentsTable.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Migrations\\20251006212537_AddPaymentsTable.cs",
               "RelativeDocumentMoniker": "EONIS\\Migrations\\20251006212537_AddPaymentsTable.cs",
@@ -735,12 +722,11 @@
               "RelativeToolTip": "EONIS\\Migrations\\20251006212616_AddPaymentsTable.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T21:26:17.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T21:26:17.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "OrderService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Services\\OrderService.cs",
               "RelativeDocumentMoniker": "EONIS\\Services\\OrderService.cs",
@@ -748,12 +734,11 @@
               "RelativeToolTip": "EONIS\\Services\\OrderService.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAkwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:53:16.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:53:16.425Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "StockBatch.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\StockBatch.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\StockBatch.cs",
@@ -761,12 +746,11 @@
               "RelativeToolTip": "EONIS\\Models\\StockBatch.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:02:53.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T11:02:53.221Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\Product.cs",
               "RelativeDocumentMoniker": "EONIS\\Models\\Product.cs",
@@ -774,34 +758,7 @@
               "RelativeToolTip": "EONIS\\Models\\Product.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAswBsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T09:52:03.832Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\appsettings.json",
-              "RelativeDocumentMoniker": "EONIS\\appsettings.json",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\appsettings.json",
-              "RelativeToolTip": "EONIS\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-04T09:47:12.556Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "OrderItem.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\OrderItem.cs",
-              "RelativeDocumentMoniker": "EONIS\\Models\\OrderItem.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\Models\\OrderItem.cs",
-              "RelativeToolTip": "EONIS\\Models\\OrderItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:41:00.451Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T09:52:03.832Z"
             },
             {
               "$type": "Document",
@@ -813,8 +770,7 @@
               "RelativeToolTip": "EONIS\\Models\\AdminProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T15:41:30.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T15:41:30.616Z"
             },
             {
               "$type": "Document",
@@ -826,8 +782,7 @@
               "RelativeToolTip": "EONIS\\EONIS.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-10-05T14:12:37.199Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-05T14:12:37.199Z"
             },
             {
               "$type": "Document",
@@ -871,8 +826,7 @@
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\EONIS\\EONIS\\EONIS.csproj",
               "RelativeToolTip": "EONIS\\EONIS.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-04T09:45:26.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T09:45:26.59Z"
             }
           ]
         }

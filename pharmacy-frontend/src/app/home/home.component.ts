@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService, Product } from '../services/product.service';
+import { ProductService } from '../services/product.service';
+import { Product } from '../models/product';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,10 @@ import { ProductService, Product } from '../services/product.service';
 export class HomeComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
@@ -20,5 +25,9 @@ export class HomeComponent implements OnInit {
         console.error('Greška pri dobijanju proizvoda:', err);
       },
     });
+  }
+
+  async addToCart(product: Product): Promise<void> {
+    await this.cartService.addToCart(product);
   }
 }

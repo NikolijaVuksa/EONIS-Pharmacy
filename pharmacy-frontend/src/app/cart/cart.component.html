@@ -1,0 +1,66 @@
+<section class="cart-page">
+  <h2>Moja korpa</h2>
+
+  <div *ngIf="items.length === 0" class="empty-cart">
+    <p>Vaša korpa je trenutno prazna.</p>
+    <a routerLink="/" class="btn btn-primary">Nazad na proizvode</a>
+  </div>
+
+  <div *ngIf="items.length > 0" class="cart-items">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Proizvod</th>
+          <th>Cena (RSD)</th>
+          <th>Količina</th>
+          <th>Ukupno</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.product.priceWithVat | number : "1.2-2" }}</td>
+          <td>
+            <input
+              type="number"
+              min="1"
+              [value]="item.quantity"
+              (change)="updateQuantity(item, $event)"
+            />
+          </td>
+          <td>
+            {{ item.product.priceWithVat * item.quantity | number : "1.2-2" }}
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="removeItem(item)">
+              Ukloni
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <p>
+        Ukupan iznos:
+        <strong>{{ total | number : "1.2-2" }} RSD</strong>
+      </p>
+
+      <div #cardInfo class="stripe-card"></div>
+
+      <div class="cart-actions">
+        <button class="btn btn-secondary" routerLink="/">
+          Nastavi kupovinu
+        </button>
+        <button
+          class="btn btn-success"
+          (click)="checkout()"
+          [disabled]="processing"
+        >
+          Plati
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

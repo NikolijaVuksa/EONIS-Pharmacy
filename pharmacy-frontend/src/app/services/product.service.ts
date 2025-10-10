@@ -1,29 +1,29 @@
+// src/app/services/product.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Product } from '../models/product';
+import { StockBatch } from '../models/stock-batch';
 
-export interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-}
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ProductService {
-  private baseUrl = 'https://localhost:7201/api';
+  private apiUrl = 'https://localhost:7201/api/products';
 
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    const url = `${this.baseUrl}/products`;
-    return this.http.get<Product[]>(url);
+    return this.http.get<Product[]>(this.apiUrl);
   }
 
   getProduct(id: number): Observable<Product> {
-    const url = `${this.baseUrl}/products/${id}`;
-    return this.http.get<Product>(url);
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  }
+
+  getAvailableStock(productId: number): Observable<number> {
+    return this.http
+      .get<StockBatch[]>(`${this.apiUrl}/${productId}/stockbatches`)
+      .pipe(
+        map((batches) => batches.reduce((sum, b) => sum + b.quantityOnHand, 0))
+      );
   }
 }

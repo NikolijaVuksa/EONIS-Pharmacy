@@ -8,14 +8,14 @@
 <section class="products-section">
   <h2>Naša ponuda</h2>
 
-  <div class="products-grid">
-    <div *ngFor="let prod of products" class="product-card">
-      <h3>{{ prod.name }}</h3>
-      <p>{{ prod.description }}</p>
-      <p class="price">
-        {{ prod.price | currency : "RSD" : "symbol" : "1.0-0" }}
+  <div class="products">
+    <div class="product-card" *ngFor="let product of products">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.manufacturer }} - {{ product.category }}</p>
+      <p>
+        Cena: <strong>{{ product.priceWithVat | number : "1.2-2" }} RSD</strong>
       </p>
-      <button>Dodaj u korpu</button>
+      <button (click)="addToCart(product)">Dodaj u korpu</button>
     </div>
   </div>
 
