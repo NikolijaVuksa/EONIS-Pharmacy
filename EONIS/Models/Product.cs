@@ -29,6 +29,8 @@ namespace EONIS.Models
         public decimal PriceWithVat => decimal.Round(BasePrice * (1 + VatRate / 100m), 2);
 
         public ICollection<StockBatch> StockBatches { get; set; } = new List<StockBatch>();
+        public string Description { get; set; } = string.Empty;
+        public string? ImagePath { get; set; }
 
     }
 }

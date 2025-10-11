@@ -1,0 +1,51 @@
+<div class="product-detail">
+  <div class="product-container" *ngIf="product">
+    <div class="product-image-wrapper">
+      <img
+        *ngIf="product.imagePath; else noImage"
+        [src]="'https://localhost:7201/' + product.imagePath"
+        alt="{{ product.name }}"
+        class="product-image"
+      />
+      <ng-template #noImage>
+        <img
+          src="assets/icons/default-product.jpg"
+          alt="Nema slike"
+          class="product-image"
+        />
+      </ng-template>
+    </div>
+
+    <div class="product-info">
+      <h2 class="product-title">{{ product.name }}</h2>
+
+      <p class="product-meta">
+        <strong>Kategorija:</strong> {{ product.category }}
+      </p>
+      <p class="product-meta">
+        <strong>Proizvođač:</strong> {{ product.manufacturer }}
+      </p>
+      <p class="product-price">
+        <strong>{{ product.priceWithVat | number : "1.2-2" }} RSD</strong>
+        <span class="vat-note">(sa PDV)</span>
+      </p>
+      <p class="product-rx" *ngIf="product.rx">Ovaj lek se izdaje na recept.</p>
+
+      <div class="product-actions">
+        <button class="btn btn-primary" (click)="addToCart()">
+          Dodaj u korpu
+        </button>
+        <button class="btn btn-secondary" routerLink="/">
+          Nazad na ponudu
+        </button>
+      </div>
+
+      <div class="product-description">
+        <h3>Opis proizvoda</h3>
+        <p>
+          {{ product.description || "Nema opisa za ovaj proizvod." }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

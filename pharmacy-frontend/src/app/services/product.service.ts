@@ -1,4 +1,3 @@
-// src/app/services/product.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
@@ -25,5 +24,12 @@ export class ProductService {
       .pipe(
         map((batches) => batches.reduce((sum, b) => sum + b.quantityOnHand, 0))
       );
+  }
+
+  uploadProductImage(productId: number, file: File): Observable<any> {
+    const uploadUrl = `${this.apiUrl}/${productId}/image`;
+    const formData = new FormData();
+    formData.append('imageFile', file);
+    return this.http.post(uploadUrl, formData);
   }
 }

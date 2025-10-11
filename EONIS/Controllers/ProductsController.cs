@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using EONIS.Data;
 using EONIS.Models;
 using EONIS.DTOs;
+using System.Net.Http.Headers;
+using System.IO;
 
 namespace EONIS.Controllers
 {
@@ -154,6 +156,32 @@ namespace EONIS.Controllers
             return Ok(new PagedResultDto<ProductListItemDto>(items, total, page, pageSize));
         }
 
+        [HttpPost("{id}/image")]
+        public async Task<IActionResult> UploadImage(int id, IFormFile imageFile)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+                return NotFound($"Proizvod sa ID {id} nije pronađen.");
 
+            if (imageFile == null || imageFile.Length == 0)
+                return BadRequest("Niste poslali fajl.");
+
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            Directory.CreateDirectory(uploadsFolder); 
+
+            var fileName = ContentDispositionHeaderValue.Parse(imageFile.ContentDisposition).FileName.Trim('"');
+            fileName = product.Id + "_" + fileName;
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(stream);
+            }
+
+            product.ImagePath = Path.Combine("images", fileName);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { imagePath = product.ImagePath });
+        }
     }
 }

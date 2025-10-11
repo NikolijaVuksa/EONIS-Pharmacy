@@ -17,13 +17,13 @@
         >Početna</a
       >
 
-      <ng-container *ngIf="(isLoggedIn$ | async) === false">
-        <a routerLink="/login" routerLinkActive="active">Prijava</a>
-      </ng-container>
-
       <a routerLink="/cart" routerLinkActive="active" class="cart-link">
         Korpa ({{ cartItemCount }})
       </a>
+
+      <ng-container *ngIf="(isLoggedIn$ | async) === false">
+        <a routerLink="/login" routerLinkActive="active">Prijava</a>
+      </ng-container>
 
       <ng-container *ngIf="(isLoggedIn$ | async) === true">
         <a routerLink="/dashboard" routerLinkActive="active">Profil</a>

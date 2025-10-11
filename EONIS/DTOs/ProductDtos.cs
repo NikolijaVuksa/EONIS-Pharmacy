@@ -8,6 +8,9 @@
         public int VatRate { get; set; }
         public string Manufacturer { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string? ImagePath { get; set; }
+
     }
 
     public class ProductReadDto
@@ -20,6 +23,9 @@
         public string Manufacturer { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
         public decimal PriceWithVat { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public string? ImagePath { get; set; }
+
     }
 
     public record PagedResultDto<T>(IEnumerable<T> Items, int Total, int Page, int PageSize);

@@ -1,25 +1,100 @@
 <section class="hero">
   <div class="hero-content">
-    <h1>Dobrodošli u Apoteku</h1>
-    <p>Brza, sigurna i pouzdana kupovina lekova i suplemenata.</p>
+    <h1>Dobrodošli u <span class="brand-name">Apoteku</span></h1>
+    <p>Vaše mesto za brzu, sigurnu i povoljnu kupovinu lekova i suplemenata.</p>
   </div>
 </section>
 
 <section class="products-section">
-  <h2>Naša ponuda</h2>
+  <div class="products-header">
+    <h2>Naša ponuda</h2>
 
-  <div class="products">
-    <div class="product-card" *ngFor="let product of products">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.manufacturer }} - {{ product.category }}</p>
-      <p>
-        Cena: <strong>{{ product.priceWithVat | number : "1.2-2" }} RSD</strong>
-      </p>
-      <button (click)="addToCart(product)">Dodaj u korpu</button>
+    <div class="filters">
+      <div class="search-box">
+        <input
+          type="text"
+          placeholder="Pretraži proizvode..."
+          [(ngModel)]="searchTerm"
+          (input)="filterProducts()"
+        />
+      </div>
+
+      <div class="page-size-selector">
+        <label for="pageSize">Prikaži po stranici:</label>
+        <select
+          id="pageSize"
+          [(ngModel)]="pageSize"
+          (change)="onPageSizeChange()"
+        >
+          <option [value]="8">8</option>
+          <option [value]="16">16</option>
+          <option [value]="32">32</option>
+        </select>
+      </div>
     </div>
-  </div>
 
-  <div *ngIf="products.length === 0" class="no-products">
-    <p>Trenutno nema dostupnih proizvoda.</p>
+    <div class="product-grid">
+      <div
+        class="product-card"
+        *ngFor="let product of pagedProducts"
+        (click)="goToProduct(product.id)"
+      >
+        <img
+          *ngIf="product.imagePath; else noImage"
+          [src]="'https://localhost:7201/' + product.imagePath"
+          alt="{{ product.name }}"
+          class="product-image"
+        />
+        <ng-template #noImage>
+          <img
+            src="assets/icons/default-product.jpg"
+            alt="Nema slike"
+            class="product-image"
+          />
+        </ng-template>
+
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-sub">
+          {{ product.manufacturer }} – {{ product.category }}
+        </p>
+        <p class="product-price">
+          Cena:
+          <strong>{{ product.priceWithVat | number : "1.2-2" }} RSD</strong>
+        </p>
+
+        <button
+          class="btn"
+          (click)="addToCart(product); $event.stopPropagation()"
+        >
+          Dodaj u korpu
+        </button>
+      </div>
+    </div>
+
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button
+        class="page-btn"
+        [disabled]="currentPage === 1"
+        (click)="changePage(currentPage - 1)"
+      >
+        « Prethodna
+      </button>
+      <span>Strana {{ currentPage }} od {{ totalPages }}</span>
+      <button
+        class="page-btn"
+        [disabled]="currentPage === totalPages"
+        (click)="changePage(currentPage + 1)"
+      >
+        Sledeća »
+      </button>
+    </div>
+
+    <div *ngIf="products.length === 0" class="no-products">
+      <p>Trenutno nema dostupnih proizvoda.</p>
+    </div>
+
+    <div *ngIf="products.length === 0" class="no-products">
+      <p>Trenutno nema dostupnih proizvoda.</p>
+    </div>
   </div>
 </section>

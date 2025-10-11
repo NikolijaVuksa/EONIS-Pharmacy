@@ -8,4 +8,6 @@ export interface Product {
   manufacturer: string;
   category: string;
   priceWithVat: number;
+  imagePath?: string;
+  errorMessage: string;
 }
