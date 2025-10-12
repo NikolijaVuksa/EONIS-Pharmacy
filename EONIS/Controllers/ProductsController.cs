@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using EONIS.Data;
-using EONIS.Models;
+﻿using EONIS.Data;
 using EONIS.DTOs;
-using System.Net.Http.Headers;
+using EONIS.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.IO;
 
 namespace EONIS.Controllers
@@ -33,6 +33,8 @@ namespace EONIS.Controllers
                 VatRate = p.VatRate,
                 Manufacturer = p.Manufacturer,
                 Category = p.Category,
+                Description = p.Description,    // ✅ dodato
+                ImagePath = p.ImagePath,        // ✅ dodato
                 PriceWithVat = p.PriceWithVat
             });
 
@@ -54,12 +56,15 @@ namespace EONIS.Controllers
                 VatRate = product.VatRate,
                 Manufacturer = product.Manufacturer,
                 Category = product.Category,
+                Description = product.Description, // ✅
+                ImagePath = product.ImagePath,     // ✅
                 PriceWithVat = product.PriceWithVat
             };
 
             return Ok(dto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<ProductReadDto>> CreateProduct(ProductCreateDto dto)
         {
@@ -70,7 +75,9 @@ namespace EONIS.Controllers
                 BasePrice = dto.BasePrice,
                 VatRate = dto.VatRate,
                 Manufacturer = dto.Manufacturer,
-                Category = dto.Category
+                Category = dto.Category,
+                Description = dto.Description,  // ✅
+                ImagePath = dto.ImagePath
             };
 
             _context.Products.Add(product);
@@ -85,29 +92,36 @@ namespace EONIS.Controllers
                 VatRate = product.VatRate,
                 Manufacturer = product.Manufacturer,
                 Category = product.Category,
+                Description = product.Description, // ✅
+                ImagePath = product.ImagePath,     // ✅
                 PriceWithVat = product.PriceWithVat
             };
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, readDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, ProductCreateDto dto)
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product updated)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null) return NotFound();
+            var existing = await _context.Products.FindAsync(id);
+            if (existing == null)
+                return NotFound();
 
-            product.Name = dto.Name;
-            product.Rx = dto.Rx;
-            product.BasePrice = dto.BasePrice;
-            product.VatRate = dto.VatRate;
-            product.Manufacturer = dto.Manufacturer;
-            product.Category = dto.Category;
+            existing.Name = updated.Name ?? existing.Name;
+            existing.Rx = updated.Rx;
+            existing.BasePrice = updated.BasePrice != 0 ? updated.BasePrice : existing.BasePrice;
+            existing.VatRate = updated.VatRate != 0 ? updated.VatRate : existing.VatRate;
+            existing.Manufacturer = updated.Manufacturer ?? existing.Manufacturer;
+            existing.Category = updated.Category ?? existing.Category;
+            existing.Description = updated.Description ?? existing.Description; // ✅
+            existing.ImagePath = updated.ImagePath ?? existing.ImagePath;
 
             await _context.SaveChangesAsync();
-            return NoContent();
+            return Ok(existing);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
@@ -150,7 +164,17 @@ namespace EONIS.Controllers
 
             var total = await query.CountAsync();
             var items = await query.Skip((page - 1) * pageSize).Take(pageSize)
-                .Select(p => new ProductListItemDto(p.Id, p.Name, p.Rx, p.BasePrice, p.VatRate, p.Manufacturer, p.Category))
+                .Select(p => new ProductListItemDto(
+                    p.Id,
+                    p.Name,
+                    p.Rx,
+                    p.BasePrice,
+                    p.VatRate,
+                    p.Manufacturer,
+                    p.Category,
+                    p.ImagePath,     
+                    p.Description    
+                ))
                 .ToListAsync();
 
             return Ok(new PagedResultDto<ProductListItemDto>(items, total, page, pageSize));
@@ -167,10 +191,9 @@ namespace EONIS.Controllers
                 return BadRequest("Niste poslali fajl.");
 
             var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-            Directory.CreateDirectory(uploadsFolder); 
+            Directory.CreateDirectory(uploadsFolder);
 
-            var fileName = ContentDispositionHeaderValue.Parse(imageFile.ContentDisposition).FileName.Trim('"');
-            fileName = product.Id + "_" + fileName;
+            var fileName = $"{product.Id}_{Path.GetFileName(imageFile.FileName)}";
             var filePath = Path.Combine(uploadsFolder, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -178,7 +201,19 @@ namespace EONIS.Controllers
                 await imageFile.CopyToAsync(stream);
             }
 
-            product.ImagePath = Path.Combine("images", fileName);
+            product.ImagePath = $"images/{fileName}";
+
+            await using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(stream);
+            }
+
+            product.ImagePath = $"images/{fileName}";
+
+            _context.Attach(product);
+            _context.Entry(product).Property(p => p.ImagePath).IsModified = true;
+
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
 
             return Ok(new { imagePath = product.ImagePath });

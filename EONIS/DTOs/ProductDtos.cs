@@ -37,6 +37,8 @@
         decimal BasePrice,
         int VatRate,
         string Manufacturer,
-        string Category
+        string Category,
+        string Description,
+        string? ImagePath
     );
 }

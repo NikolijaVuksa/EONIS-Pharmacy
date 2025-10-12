@@ -1,0 +1,21 @@
+<h2>Korisnici</h2>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Korisničko ime</th>
+      <th>Email</th>
+      <th>Ime i prezime</th>
+      <th>Uloge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ u.userName }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.fullName }}</td>
+      <td>{{ (u.roles || []).join(", ") }}</td>
+    </tr>
+  </tbody>
+</table>

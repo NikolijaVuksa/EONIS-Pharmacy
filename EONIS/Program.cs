@@ -1,11 +1,14 @@
 ﻿using EONIS.Data;
 using EONIS.Models;
-using EONIS.Services;  
+using EONIS.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Stripe;
+using System.Security.Claims;
 using System.Text;
+using static System.Net.WebRequestMethods;
 
 namespace EONIS
 {
@@ -82,7 +85,7 @@ namespace EONIS
                 .AddEntityFrameworkStores<PharmacyContext>()
                 .AddDefaultTokenProviders();
 
-            builder.Services.AddAuthentication(options =>
+            /*builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "JwtBearer";
                 options.DefaultChallengeScheme = "JwtBearer";
@@ -100,7 +103,41 @@ namespace EONIS
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                 };
+            });*/
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+
+                    NameClaimType = ClaimTypes.Email,
+                    RoleClaimType = ClaimTypes.Role
+
+                };
             });
+
+            var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+
+            app.UseStaticFiles();
 
 
 
@@ -116,13 +153,7 @@ namespace EONIS
                     });
             });
 
-            var app = builder.Build();
-
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+           
 
             //error handler middleware
             app.UseExceptionHandler(a => a.Run(async context =>
@@ -140,10 +171,10 @@ namespace EONIS
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            app.UseHttpsRedirection();
             app.UseCors("AllowAngularApp");
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
             await SeedRolesAsync(app);

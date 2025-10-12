@@ -1,0 +1,32 @@
+<h2>Porudžbine</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Kupac</th>
+      <th>Email</th>
+      <th>Datum</th>
+      <th>Status</th>
+      <th>Akcija</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of orders">
+      <td>{{ o.id }}</td>
+      <td>{{ o.customerName || "—" }}</td>
+      <td>{{ o.customerEmail }}</td>
+      <td>{{ o.createdAt | date : "yyyy-MM-dd HH:mm" }}</td>
+      <td>
+        <select [(ngModel)]="o.status">
+          <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="saveStatus(o)">Sačuvaj</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="loading">Učitavanje...</div>

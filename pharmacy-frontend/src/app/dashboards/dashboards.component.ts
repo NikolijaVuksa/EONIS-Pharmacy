@@ -6,6 +6,9 @@ import { Observable, forkJoin } from 'rxjs';
   providedIn: 'root',
 })
 export class DashboardService {
+  getMyOrders() {
+    throw new Error('Method not implemented.');
+  }
   private baseUrl = 'https://localhost:7201/api';
 
   constructor(private http: HttpClient) {}

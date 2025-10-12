@@ -27,4 +27,8 @@ export class OrderService {
   payOrder(orderId: number): Observable<Order> {
     return this.http.post<Order>(`${this.apiUrl}/${orderId}/pay`, {});
   }
+
+  getMyOrders(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/my-orders`);
+  }
 }

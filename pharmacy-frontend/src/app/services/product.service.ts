@@ -6,7 +6,7 @@ import { StockBatch } from '../models/stock-batch';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private apiUrl = 'https://localhost:7201/api/products';
+  private apiUrl = '/api/Products';
 
   constructor(private http: HttpClient) {}
 

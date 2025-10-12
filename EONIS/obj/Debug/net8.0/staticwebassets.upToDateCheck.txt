@@ -1,0 +1,3 @@
+wwwroot\images\2_paracetamol.jpg
+wwwroot\images\default-product.jpg
+wwwroot\images\1_brufen.jpg

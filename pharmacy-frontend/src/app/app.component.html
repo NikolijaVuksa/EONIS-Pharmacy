@@ -1,4 +1,4 @@
-<header class="navbar">
+<!--<header class="navbar">
   <div class="container">
     <div class="logo-container">
       <img
@@ -38,5 +38,117 @@
 </main>
 
 <footer class="footer">
+  <p>© 2025 Apoteka — Sva prava zadržana</p>
+</footer>
+
+<header class="navbar">
+  <div class="container">
+    <div class="logo-container">
+      <img
+        src="assets/icons/pharmacy-logo.jpg"
+        alt="Apoteka logo"
+        class="logo"
+      />
+      <span class="brand">Apoteka</span>
+    </div>
+
+    <nav class="nav-links">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Početna</a
+      >
+
+      <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+        Korpa ({{ cartItemCount }})
+      </a>
+
+      <ng-container *ngIf="(isLoggedIn$ | async) === false">
+        <a routerLink="/login" routerLinkActive="active">Prijava</a>
+      </ng-container>
+
+      <ng-container *ngIf="(isLoggedIn$ | async) === true">
+        <a
+          *ngIf="userRole === 'Admin'; else customerLink"
+          routerLink="/admin"
+          routerLinkActive="active"
+          >Admin panel</a
+        >
+
+        <ng-template #customerLink>
+          <a routerLink="/dashboard" routerLinkActive="active">Profil</a>
+        </ng-template>
+
+
+        <a (click)="onLogout()" class="logout">Odjava</a>
+      </ng-container>
+    </nav>
+  </div>
+</header>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <p>© 2025 Apoteka — Sva prava zadržana</p>
+</footer>-->
+
+<!-- Navbar se NE prikazuje na /admin rutama -->
+<header class="navbar" *ngIf="!isAdminRoute()">
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo-container">
+      <img
+        src="assets/icons/pharmacy-logo.jpg"
+        alt="Apoteka logo"
+        class="logo"
+      />
+      <span class="brand">Apoteka</span>
+    </div>
+
+    <!-- Navigacija -->
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active">Početna</a>
+
+      <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+        Korpa ({{ cartItemCount }})
+      </a>
+
+      <!-- Kada korisnik NIJE prijavljen -->
+      <ng-container *ngIf="(isLoggedIn$ | async) === false">
+        <a routerLink="/login" routerLinkActive="active">Prijava</a>
+      </ng-container>
+
+      <!-- Kada je korisnik prijavljen -->
+      <ng-container *ngIf="(isLoggedIn$ | async) === true">
+        <!-- ADMIN -->
+        <a
+          *ngIf="userRole === 'Admin'; else customerLink"
+          routerLink="/admin"
+          routerLinkActive="active"
+          >Admin panel</a
+        >
+
+        <!-- CUSTOMER -->
+        <ng-template #customerLink>
+          <a routerLink="/dashboard" routerLinkActive="active">Profil</a>
+        </ng-template>
+
+        <!-- Logout -->
+        <a (click)="onLogout()" class="logout">Odjava</a>
+      </ng-container>
+    </nav>
+  </div>
+</header>
+
+<!-- Glavni sadržaj aplikacije -->
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Footer se takođe NE prikazuje na /admin rutama -->
+<footer class="footer" *ngIf="!isAdminRoute()">
   <p>© 2025 Apoteka — Sva prava zadržana</p>
 </footer>

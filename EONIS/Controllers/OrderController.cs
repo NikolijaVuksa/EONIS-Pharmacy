@@ -5,6 +5,7 @@ using EONIS.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace EONIS.Controllers
 {
@@ -175,22 +176,111 @@ namespace EONIS.Controllers
             return Ok(Map(order));
         }
 
-        [Authorize(Roles = "Customer")]
+        /*[Authorize(Roles = "Customer")]
         [HttpGet("my-orders")]
         public async Task<ActionResult<IEnumerable<Order>>> GetMyOrders()
         {
-            var email = User.Identity?.Name;
+            var email = User.FindFirst(ClaimTypes.Email)?.Value ??
+                        User.FindFirst("email")?.Value ??
+                        User.FindFirst(ClaimTypes.Name)?.Value;
+
             if (email == null)
-                return Unauthorized();
+                return Unauthorized("Nevažeći token.");
+
+            /*var email = User.Identity?.Name;
+            if (email == null)
+                return Unauthorized();*/
+
+        /*var orders = await _db.Orders
+            .Include(o => o.Items)
+            .ThenInclude(oi => oi.Product)
+            .Where(o => o.CustomerEmail == email)
+            .OrderByDescending(o => o.CreatedAt)
+            .ToListAsync();
+
+        return Ok(orders);
+    }*/
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet("my-orders")]
+        public async Task<IActionResult> GetMyOrders()
+        {
+            var email = User.FindFirst(ClaimTypes.Email)?.Value ??
+                        User.FindFirst("email")?.Value ??
+                        User.FindFirst(ClaimTypes.Name)?.Value;
+
+            if (email == null)
+                return Unauthorized("Nevažeći token.");
 
             var orders = await _db.Orders
                 .Include(o => o.Items)
-                .ThenInclude(oi => oi.Product)
+                .ThenInclude(i => i.Product)
                 .Where(o => o.CustomerEmail == email)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
 
-            return Ok(orders);
+            var result = orders.Select(o => new OrderReadDto
+            {
+                Id = o.Id,
+                Status = o.Status,
+                CreatedAt = o.CreatedAt,
+                Items = o.Items.Select(i => new OrderItemReadDto
+                {
+                    Id = i.Id,
+                    ProductId = i.ProductId,
+                    ProductName = i.Product?.Name,
+                    Quantity = i.Quantity,
+                    UnitPrice = i.UnitPrice
+                }).ToList()
+
+            });
+
+            return Ok(result);
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<AdminOrderReadDto>>> GetAllOrders()
+        {
+            var orders = await _db.Orders
+                .Include(o => o.Items)
+                .OrderByDescending(o => o.CreatedAt)
+                .ToListAsync();
+
+            // Dobijanje imena korisnika prema emailu iz baze (Identity)
+            var users = await _db.Users.ToListAsync();
+            var dtos = orders.Select(o => new AdminOrderReadDto
+            {
+                Id = o.Id,
+                Status = o.Status,
+                CustomerEmail = o.CustomerEmail,
+                CustomerName = users.FirstOrDefault(u => u.Email == o.CustomerEmail)?.FullName,
+                CreatedAt = o.CreatedAt,
+                Items = o.Items.Select(i => new OrderItemReadDto
+                {
+                    Id = i.Id,
+                    ProductId = i.ProductId,
+                    ProductName = i.ProductName,
+                    Quantity = i.Quantity,
+                    UnitPrice = i.UnitPrice,
+                    VatRate = i.VatRate
+                }).ToList()
+            }).ToList();
+
+            return Ok(dtos);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{orderId:int}/status")]
+        public async Task<IActionResult> UpdateOrderStatus(int orderId, [FromBody] UpdateOrderStatusDto dto)
+        {
+            var order = await _db.Orders.FindAsync(orderId);
+            if (order == null) return NotFound();
+
+            order.Status = dto.Status;
+            await _db.SaveChangesAsync();
+            return NoContent();
         }
 
 

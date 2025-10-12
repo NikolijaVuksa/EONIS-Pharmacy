@@ -1,0 +1,86 @@
+<div class="card shadow p-4">
+  <h4 class="mb-3">
+    {{ isEditMode ? "Izmena proizvoda" : "Dodavanje proizvoda" }}
+  </h4>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Naziv</label>
+      <input type="text" formControlName="name" class="form-control" />
+    </div>
+
+    <div class="form-check mb-3">
+      <input
+        type="checkbox"
+        formControlName="rx"
+        class="form-check-input"
+        id="rx"
+      />
+      <label for="rx" class="form-check-label">Recept potreban</label>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>Osnovna cena (RSD)</label>
+        <input type="number" formControlName="basePrice" class="form-control" />
+      </div>
+      <div class="col">
+        <label>PDV (%)</label>
+        <input type="number" formControlName="vatRate" class="form-control" />
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>Proizvođač</label>
+        <input
+          type="text"
+          formControlName="manufacturer"
+          class="form-control"
+        />
+      </div>
+      <div class="col">
+        <label>Kategorija</label>
+        <input type="text" formControlName="category" class="form-control" />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Opis</label>
+      <textarea
+        formControlName="description"
+        class="form-control"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Slika proizvoda</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="form-control"
+      />
+      <div class="mt-2" *ngIf="previewUrl">
+        <img
+          [src]="previewUrl"
+          alt="Pregled slike"
+          class="img-thumbnail"
+          style="max-width: 150px"
+        />
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary me-2"
+      [disabled]="form.invalid"
+    >
+      {{ isEditMode ? "Sačuvaj izmene" : "Dodaj proizvod" }}
+    </button>
+
+    <button type="button" class="btn btn-secondary" (click)="cancel()">
+      Otkaži
+    </button>
+  </form>
+</div>

@@ -13,6 +13,8 @@ export class AppComponent {
   isLoggedIn$ = this.authService.isLoggedIn$;
   cartItemCount = 0;
   private cartSub: Subscription;
+  userRole: string | null = null;
+  currentUrl: string = '';
 
   constructor(
     private router: Router,
@@ -25,8 +27,24 @@ export class AppComponent {
     );
   }
 
+  ngOnInit(): void {
+    this.userRole = this.authService.getUserRole();
+
+    this.isLoggedIn$.subscribe((loggedIn) => {
+      if (loggedIn) {
+        this.userRole = this.authService.getUserRole();
+      } else {
+        this.userRole = null;
+      }
+    });
+  }
+
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  isAdminRoute(): boolean {
+    return this.currentUrl.startsWith('/admin');
   }
 }

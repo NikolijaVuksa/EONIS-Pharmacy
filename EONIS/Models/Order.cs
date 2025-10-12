@@ -17,8 +17,5 @@ namespace EONIS.Models
 
         public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
 
-        public int? ReservationId { get; set; }
-        public PrescriptionReservation? Reservation { get; set; }
-
     }
 }
