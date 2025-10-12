@@ -18,7 +18,16 @@ export class LoginComponent {
     this.errorMessage = '';
 
     this.authService.login(this.email, this.password).subscribe({
-      next: () => this.router.navigate(['/dashboard']),
+      next: () => {
+        const role = this.authService.getUserRole();
+        if (role === 'Admin') {
+          this.router.navigate(['/admin']);
+        } else if (role === 'Customer') {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/']);
+        }
+      },
       error: () =>
         (this.errorMessage = 'Neispravni kredencijali. Pokušajte ponovo.'),
     });

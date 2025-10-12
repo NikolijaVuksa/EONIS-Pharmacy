@@ -1618,6 +1618,14 @@
           "category": {
             "type": "string",
             "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagePath": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

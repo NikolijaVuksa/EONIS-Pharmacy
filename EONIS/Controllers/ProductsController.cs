@@ -190,7 +190,7 @@ namespace EONIS.Controllers
             if (imageFile == null || imageFile.Length == 0)
                 return BadRequest("Niste poslali fajl.");
 
-            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            /*var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
             Directory.CreateDirectory(uploadsFolder);
 
             var fileName = $"{product.Id}_{Path.GetFileName(imageFile.FileName)}";
@@ -214,6 +214,27 @@ namespace EONIS.Controllers
             _context.Entry(product).Property(p => p.ImagePath).IsModified = true;
 
             _context.Products.Update(product);
+            await _context.SaveChangesAsync();*/
+
+
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            // Obriši staru sliku ako postoji
+            if (!string.IsNullOrEmpty(product.ImagePath))
+            {
+                var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", product.ImagePath);
+                if (System.IO.File.Exists(oldFilePath))
+                {
+                    System.IO.File.Delete(oldFilePath);
+                }
+            }
+            // Sada sačuvaj novu sliku
+            var fileName = $"{product.Id}_{Path.GetFileName(imageFile.FileName)}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(stream);
+            }
+            product.ImagePath = $"images/{fileName}";
             await _context.SaveChangesAsync();
 
             return Ok(new { imagePath = product.ImagePath });

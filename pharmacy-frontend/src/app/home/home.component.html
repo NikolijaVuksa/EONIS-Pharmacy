@@ -9,14 +9,42 @@
   <div class="products-header">
     <h2>Naša ponuda</h2>
 
-    <div class="filters">
+    <div class="filters d-flex gap-3 flex-wrap align-items-center">
       <div class="search-box">
         <input
           type="text"
           placeholder="Pretraži proizvode..."
           [(ngModel)]="searchTerm"
           (input)="filterProducts()"
+          class="form-control"
         />
+      </div>
+
+      <div class="category-filter">
+        <label for="categoryFilter">Kategorija:</label>
+        <select
+          id="categoryFilter"
+          [(ngModel)]="selectedCategory"
+          (change)="filterProducts()"
+          class="form-select"
+        >
+          <option value="">Sve kategorije</option>
+          <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <div class="rx-filter">
+        <label for="rxFilter">Tip:</label>
+        <select
+          id="rxFilter"
+          [(ngModel)]="rxFilter"
+          (change)="filterProducts()"
+          class="form-select"
+        >
+          <option value="">Svi proizvodi</option>
+          <option value="true">Na recept</option>
+          <option value="false">Bez recepta</option>
+        </select>
       </div>
 
       <div class="page-size-selector">
@@ -25,9 +53,11 @@
           id="pageSize"
           [(ngModel)]="pageSize"
           (change)="onPageSizeChange()"
+          class="form-select"
         >
           <option [value]="8">8</option>
           <option [value]="16">16</option>
+          <option [value]="20">20</option>
           <option [value]="32">32</option>
         </select>
       </div>
@@ -87,10 +117,6 @@
       >
         Sledeća »
       </button>
-    </div>
-
-    <div *ngIf="products.length === 0" class="no-products">
-      <p>Trenutno nema dostupnih proizvoda.</p>
     </div>
 
     <div *ngIf="products.length === 0" class="no-products">

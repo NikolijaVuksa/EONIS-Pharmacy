@@ -14,11 +14,15 @@ export class HomeComponent implements OnInit {
   pagedProducts: Product[] = [];
 
   currentPage = 1;
-  pageSize = 4;
+  pageSize = 12;
   totalPages = 1;
 
   searchTerm: string = '';
+  selectedCategory: string = '';
+  rxFilter: string = '';
+
   filteredProducts: Product[] = [];
+  categories: string[] = [];
 
   constructor(
     private productService: ProductService,
@@ -34,6 +38,11 @@ export class HomeComponent implements OnInit {
     this.productService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
+
+        this.categories = Array.from(
+          new Set(this.products.map((p) => p.category).filter((c) => c))
+        );
+
         this.filteredProducts = [...this.products];
         this.totalPages = Math.ceil(
           this.filteredProducts.length / this.pageSize
@@ -46,12 +55,26 @@ export class HomeComponent implements OnInit {
 
   filterProducts(): void {
     const term = this.searchTerm.toLowerCase().trim();
-    this.filteredProducts = this.products.filter(
-      (p) =>
+
+    this.filteredProducts = this.products.filter((p) => {
+      const matchesSearch =
+        !term ||
         p.name.toLowerCase().includes(term) ||
         p.manufacturer.toLowerCase().includes(term) ||
-        p.category.toLowerCase().includes(term)
-    );
+        (p.category && p.category.toLowerCase().includes(term));
+
+      const matchesCategory =
+        !this.selectedCategory || p.category === this.selectedCategory;
+
+      const matchesRx =
+        this.rxFilter === ''
+          ? true
+          : this.rxFilter === 'true'
+          ? p.rx === true
+          : p.rx === false;
+
+      return matchesSearch && matchesCategory && matchesRx;
+    });
 
     this.totalPages = Math.ceil(this.filteredProducts.length / this.pageSize);
     this.currentPage = 1;
@@ -82,7 +105,7 @@ export class HomeComponent implements OnInit {
 
   onPageSizeChange(): void {
     this.currentPage = 1;
-    this.totalPages = Math.ceil(this.products.length / this.pageSize);
+    this.totalPages = Math.ceil(this.filteredProducts.length / this.pageSize);
     this.updatePagedProducts();
   }
 }

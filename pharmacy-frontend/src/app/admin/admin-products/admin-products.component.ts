@@ -31,14 +31,13 @@ export class AdminProductsComponent implements OnInit {
   };
 
   currentPage = 1;
-  pageSize = 6;
+  pageSize = 12;
   totalPages = 1;
 
   selectedFile: File | null = null;
   imagePreview: string | null = null;
   isLoading = false;
 
-  // ✅ baza URL-ova za backend
   backendUrl = 'https://localhost:7201/';
 
   constructor(
@@ -101,7 +100,6 @@ export class AdminProductsComponent implements OnInit {
     this.isLoading = true;
 
     if (this.editId == null) {
-      // 🔹 kreiranje novog proizvoda
       this.admin.createProduct(this.form).subscribe({
         next: (created) => {
           if (created && created.id && this.selectedFile) {
@@ -115,7 +113,6 @@ export class AdminProductsComponent implements OnInit {
         complete: () => (this.isLoading = false),
       });
     } else {
-      // 🔹 izmena postojećeg proizvoda
       this.admin.updateProduct(this.editId, this.form).subscribe({
         next: () => {
           if (this.selectedFile && this.editId) {
@@ -138,15 +135,12 @@ export class AdminProductsComponent implements OnInit {
       next: (res) => {
         console.log('Upload uspešan:', res.imagePath);
 
-        // odmah ažuriraj lokalni proizvod (bez čekanja reload-a)
         const product = this.products.find((p) => p.id === productId);
         if (product) product.imagePath = res.imagePath;
 
-        // resetuj formu i preview
         this.resetForm();
         this.imagePreview = null;
 
-        // opcionalno: učitaj ponovo sve proizvode
         this.load();
       },
       error: (err) => console.error('Greška pri uploadu slike:', err),

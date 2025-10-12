@@ -128,6 +128,19 @@ namespace EONIS
                 };
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200")
+                              .AllowAnyHeader()
+                              .AllowAnyMethod()
+                              .AllowCredentials();
+                    });
+            });
+
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -141,17 +154,6 @@ namespace EONIS
 
 
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAngularApp",
-                    policy =>
-                    {
-                        policy.WithOrigins("http://localhost:4200")  
-                              .AllowAnyHeader()
-                              .AllowAnyMethod()
-                              .AllowCredentials();
-                    });
-            });
 
            
 
@@ -170,6 +172,10 @@ namespace EONIS
                 context.Response.StatusCode = 500;
                 await context.Response.WriteAsJsonAsync(response);
             }));
+
+
+
+           
 
             app.UseHttpsRedirection();
             app.UseCors("AllowAngularApp");

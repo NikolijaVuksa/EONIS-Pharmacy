@@ -9,7 +9,7 @@ import { lastValueFrom } from 'rxjs';
   templateUrl: './product-form.component.html',
 })
 export class ProductFormComponent implements OnInit {
-  @Input() product: any = null; // ako se prosledi — radi se izmena
+  @Input() product: any = null;
   @Output() formClose = new EventEmitter<void>();
   @Output() formSaved = new EventEmitter<void>();
 
@@ -82,19 +82,15 @@ export class ProductFormComponent implements OnInit {
 
     try {
       if (this.isEditMode && productId) {
-        // 🔹 Izmena postojećeg proizvoda
         await this.http.put(`${this.baseUrl}/${productId}`, data).toPromise();
 
-        // Ako postoji nova slika — uploaduj
         if (this.selectedFile) await this.uploadImage(productId);
       } else {
-        // 🔹 Kreiranje novog proizvoda
         const created: any = await this.http
           .post(this.baseUrl, data)
           .toPromise();
         productId = created.id;
 
-        // Ako postoji slika — uploaduj (backend automatski čuva path)
         if (productId && this.selectedFile) await this.uploadImage(productId);
       }
 
