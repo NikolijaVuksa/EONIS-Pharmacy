@@ -1,13 +1,13 @@
 export interface Product {
   id: number;
   name: string;
-  description?: string;
   rx: boolean;
   basePrice: number;
   vatRate: number;
   manufacturer: string;
   category: string;
-  priceWithVat: number;
+  description: string;
   imagePath?: string;
-  errorMessage: string;
+  priceWithVat: number;
+  totalStock: number;
 }

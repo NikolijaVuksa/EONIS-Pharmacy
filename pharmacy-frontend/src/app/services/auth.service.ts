@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private authUrl = 'https://localhost:7201/api/auth';
+  private profileUrl = 'https://localhost:7201/api/profile';
   private _isLoggedIn$ = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
@@ -16,7 +17,6 @@ export class AuthService {
     return !!localStorage.getItem('authToken');
   }
 
-  // 🔹 Login – čuva token i vodi korisnika na odgovarajući dashboard
   login(email: string, password: string): Observable<any> {
     return this.http
       .post<any>(`${this.authUrl}/login`, { email, password })
@@ -35,6 +35,10 @@ export class AuthService {
           }
         })
       );
+  }
+
+  getMyProfile(): Observable<any> {
+    return this.http.get(`${this.profileUrl}/me`);
   }
 
   logout(): void {

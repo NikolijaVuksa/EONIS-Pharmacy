@@ -64,5 +64,21 @@ namespace EONIS.Controllers
             await _db.SaveChangesAsync();
             return Ok("Admin profile updated");
         }
+
+        [HttpGet("me")]
+        public async Task<ActionResult<CustomerProfileDto>> GetMyProfile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return NotFound();
+
+            return Ok(new CustomerProfileDto
+            {
+                Address = user.CustomerProfile?.Address,
+                City = user.CustomerProfile?.City,
+                PostalCode = user.CustomerProfile?.PostalCode,
+                DateOfBirth = user.CustomerProfile?.DateOfBirth,
+                InsuranceNumber = user.CustomerProfile?.InsuranceNumber
+            });
+        }
     }
 }

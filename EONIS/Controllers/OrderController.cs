@@ -25,7 +25,8 @@ namespace EONIS.Controllers
             Status = o.Status,
             CustomerEmail = o.CustomerEmail,
             CreatedAt = o.CreatedAt,
-            Items = o.Items.Select(i => new OrderItemReadDto
+
+        Items = o.Items.Select(i => new OrderItemReadDto
             {
                 Id = i.Id,
                 ProductId = i.ProductId,
@@ -80,6 +81,13 @@ namespace EONIS.Controllers
                 }).ToList()
             };
 
+            foreach (var item in dto.Items)
+            {
+                var p = products[item.ProductId];
+                p.TotalStock -= item.Quantity; 
+            }
+
+
             _db.Orders.Add(order);
             await _db.SaveChangesAsync();
 
@@ -94,7 +102,6 @@ namespace EONIS.Controllers
             return Ok(Map(order));
         }
 
-        // ✅ place -> skida sa zaliha (TotalStock)
         [HttpPost("{id:int}/place")]
         public async Task<ActionResult<OrderReadDto>> Place(int id)
         {
@@ -131,7 +138,6 @@ namespace EONIS.Controllers
             return Ok(Map(order));
         }
 
-        // ✅ cancel -> vraća količinu na TotalStock
         [HttpPost("{id:int}/cancel")]
         public async Task<ActionResult<OrderReadDto>> Cancel(int id)
         {

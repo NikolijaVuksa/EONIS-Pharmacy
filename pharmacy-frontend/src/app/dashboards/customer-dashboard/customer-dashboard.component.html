@@ -1,18 +1,47 @@
 <section class="customer-dashboard">
   <h2>Dobrodošli, {{ userEmail }}</h2>
 
-  <div class="cards-container">
-    <div class="card">
-      <div class="card-icon">📦</div>
-      <h3>Moje porudžbine</h3>
-      <ul *ngIf="orders.length; else noOrders">
-        <li *ngFor="let o of orders">
-          <strong>ID:</strong> {{ o.id }} | <strong>Status:</strong>
-          {{ o.status }} | <strong>Datum:</strong>
-          {{ o.createdAt | date : "short" }}
-        </li>
-      </ul>
-      <ng-template #noOrders><p>Nema porudžbina.</p></ng-template>
-    </div>
+  <div class="profile-card" *ngIf="profile">
+    <h3>Moji podaci</h3>
+    <p>
+      <strong>Adresa:</strong> {{ profile.address }}, {{ profile.city }}
+      {{ profile.postalCode }}
+    </p>
+    <p>
+      <strong>Datum rođenja:</strong>
+      {{ profile.dateOfBirth | date : "shortDate" }}
+    </p>
+    <p><strong>Broj osiguranja:</strong> {{ profile.insuranceNumber }}</p>
   </div>
+
+  <section class="customer-dashboard">
+    <div class="cards-container" *ngIf="orders.length > 0; else noOrders">
+      <div class="card" *ngFor="let o of orders">
+        <div class="card-icon">📦</div>
+        <h3>Porudžbina</h3>
+
+        <p><strong>Status:</strong> {{ o.status }}</p>
+        <p><strong>Datum:</strong> {{ o.createdAt | date : "short" }}</p>
+
+        <p class="total">
+          <strong>Ukupno:</strong>
+          {{ o.totalWithVat | currency : "RSD" : "symbol" }}
+        </p>
+
+        <div class="items" *ngIf="o.items?.length">
+          <h4>Stavke:</h4>
+          <ul>
+            <li *ngFor="let item of o.items">
+              {{ item.productName }} (x{{ item.quantity }}) –
+              {{ item.lineTotalWithVat | currency : "RSD" : "symbol" }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noOrders>
+      <p class="no-orders">Nema porudžbina.</p>
+    </ng-template>
+  </section>
 </section>
