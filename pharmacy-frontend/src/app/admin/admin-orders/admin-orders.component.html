@@ -1,68 +1,80 @@
-<div class="admin-container">
-  <div class="header d-flex justify-content-between align-items-center mb-3">
-    <h2 class="fw-bold">Upravljanje porudžbinama</h2>
-  </div>
+<div class="container">
+  <h2 class="fw-bold mb-4">Porudžbine</h2>
 
   <div *ngIf="loading" class="alert alert-info">Učitavanje...</div>
-  <div *ngIf="!loading && orders.length === 0" class="alert alert-secondary">
+  <div
+    *ngIf="!loading && pagedOrders.length === 0"
+    class="alert alert-secondary"
+  >
     Nema porudžbina.
   </div>
 
-  <!-- GRID KARTICA -->
-  <div class="order-grid">
-    <div class="order-card" *ngFor="let o of orders">
-      <!-- Naslov -->
-      <h3 class="order-title">Porudžbina #{{ o.id }}</h3>
-
-      <!-- Status -->
-      <p class="order-status">
-        <strong>Status:</strong>
-        <span class="status-badge" [ngClass]="o.status">{{ o.status }}</span>
-      </p>
-
-      <!-- Akcije -->
-      <div class="order-actions">
-        <select [(ngModel)]="o.status" class="form-select mb-2">
-          <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
-        </select>
-        <div class="d-flex justify-content-center gap-2">
-          <button class="btn btn-success btn-sm" (click)="saveStatus(o)">
-            Sačuvaj
-          </button>
-          <button
-            class="btn btn-outline-primary btn-sm"
-            (click)="toggleDetails(o)"
-          >
-            {{ selectedOrder === o ? "Zatvori" : "Detalji" }}
-          </button>
+  <div class="row g-3">
+    <div class="col-md-6 col-lg-4" *ngFor="let o of pagedOrders">
+      <div class="order-card shadow-sm" [ngClass]="cardBorderClass(o.status)">
+        <!-- Header -->
+        <div class="order-header d-flex justify-content-between">
+          <span class="order-id">#{{ o.id }}</span>
+          <span class="status-badge" [ngClass]="statusClass(o.status)">
+            {{ o.status }}
+          </span>
         </div>
-      </div>
 
-      <!-- Detalji -->
-      <div class="order-details mt-3" *ngIf="selectedOrder === o">
-        <p class="fw-bold">{{ o.customerName || "Nepoznat kupac" }}</p>
-        <p class="text-muted small">{{ o.customerEmail }}</p>
-        <p class="text-muted small">
-          {{ o.createdAt | date : "dd.MM.yyyy HH:mm" }}
-        </p>
-
-        <h6 class="mt-2">Stavke:</h6>
-        <ul class="small">
-          <li *ngFor="let it of o.items">
-            {{ it.productName }} × {{ it.quantity }} —
-            {{ it.unitPrice | number : "1.2-2" }} RSD
-            <span class="text-muted">(PDV {{ it.vatRate }}%)</span>
-          </li>
-        </ul>
-
-        <p class="fw-bold mt-2">
+        <!-- Ukupna cena -->
+        <p class="order-total">
           Ukupno: {{ getTotal(o) | number : "1.2-2" }} RSD
         </p>
+
+        <!-- Dugme detalji -->
+        <div class="card-actions text-center">
+          <button class="btn btn-details" (click)="toggleDetails(o)">
+            {{ selectedOrder === o ? "Sakrij detalje" : "Detalji" }}
+          </button>
+        </div>
+
+        <!-- Detalji -->
+        <div *ngIf="selectedOrder === o" class="order-details mt-3">
+          <p>
+            <strong>Datum:</strong>
+            {{ o.createdAt | date : "dd.MM.yyyy HH:mm" }}
+          </p>
+          <p><strong>Kupac:</strong> {{ o.customerName }}</p>
+          <p><strong>Email:</strong> {{ o.customerEmail }}</p>
+
+          <h6 class="mt-3">Stavke:</h6>
+          <ul class="order-items">
+            <li *ngFor="let it of o.items">
+              <div class="item-line">
+                <span class="item-name">{{ it.productName }}</span>
+                <span class="item-qty">× {{ it.quantity }}</span>
+                <span class="item-price"
+                  >{{ it.unitPrice | number : "1.2-2" }} RSD</span
+                >
+                <span class="item-vat">(+ PDV {{ it.vatRate }}%)</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Footer (samo dropdown) -->
+          <div class="order-footer mt-3">
+            <select
+              [(ngModel)]="o.status"
+              (change)="saveStatus(o)"
+              class="status-select"
+            >
+              <option value="Pending">⏳ Pending</option>
+              <option value="Processing">🔄 Processing</option>
+              <option value="Shipped">📦 Shipped</option>
+              <option value="Delivered">✅ Delivered</option>
+              <option value="Cancelled">❌ Cancelled</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- PAGINACIJA -->
+  <!-- Paginacija -->
   <div class="pagination text-center mt-4" *ngIf="totalPages > 1">
     <button
       class="page-btn"

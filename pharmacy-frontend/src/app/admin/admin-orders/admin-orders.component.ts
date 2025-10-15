@@ -7,16 +7,16 @@ import {
 @Component({
   selector: 'app-admin-orders',
   templateUrl: './admin-orders.component.html',
+  styleUrls: ['./admin-orders.component.css'],
 })
 export class AdminOrdersComponent implements OnInit {
   allOrders: AdminOrder[] = []; // sve porudžbine sa backenda
-  orders: AdminOrder[] = []; // samo trenutna stranica
-  statuses = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
+  pagedOrders: AdminOrder[] = []; // prikazane na trenutnoj stranici
   loading = false;
   selectedOrder: AdminOrder | null = null;
 
   currentPage = 1;
-  pageSize = 20;
+  pageSize = 6; // 6 po strani
   totalPages = 1;
 
   constructor(private admin: AdminDataService) {}
@@ -42,7 +42,7 @@ export class AdminOrdersComponent implements OnInit {
 
   updatePagedOrders() {
     const start = (this.currentPage - 1) * this.pageSize;
-    this.orders = this.allOrders.slice(start, start + this.pageSize);
+    this.pagedOrders = this.allOrders.slice(start, start + this.pageSize);
   }
 
   nextPage() {
@@ -59,17 +59,21 @@ export class AdminOrdersComponent implements OnInit {
     }
   }
 
-  showDetails(order: AdminOrder) {
-    this.selectedOrder = order;
+  toggleDetails(order: AdminOrder) {
+    this.selectedOrder = this.selectedOrder === order ? null : order;
   }
 
-  saveStatus(o: AdminOrder) {
-    this.admin.updateOrderStatus(o.id, o.status).subscribe({
+  closeDetails() {
+    this.selectedOrder = null;
+  }
+
+  saveStatus(order: AdminOrder) {
+    this.admin.updateOrderStatus(order.id, order.status).subscribe({
       next: () => {
-        // opcionalno toast ili reload
+        console.log(`Status porudžbine #${order.id} ažuriran`);
       },
       error: () => {
-        // prikazi gresku
+        console.error('Greška pri ažuriranju statusa');
       },
     });
   }
@@ -84,23 +88,30 @@ export class AdminOrdersComponent implements OnInit {
   statusClass(s: string): string {
     switch (s) {
       case 'Paid':
-        return 'badge bg-success';
+        return 'bg-success';
       case 'Payment Failed':
-        return 'badge bg-danger';
+        return 'bg-danger';
       case 'Refunded':
-        return 'badge bg-secondary';
+        return 'bg-secondary';
       case 'Payment Pending':
-        return 'badge bg-warning text-dark';
+        return 'bg-warning text-dark';
       default:
-        return 'badge bg-light text-dark';
+        return 'bg-light text-dark';
     }
   }
 
-  toggleDetails(order: AdminOrder) {
-    this.selectedOrder = this.selectedOrder === order ? null : order;
-  }
-
-  closeDetails() {
-    this.selectedOrder = null;
+  cardBorderClass(s: string): string {
+    switch (s) {
+      case 'Paid':
+        return 'border-success';
+      case 'Payment Failed':
+        return 'border-danger';
+      case 'Refunded':
+        return 'border-secondary';
+      case 'Payment Pending':
+        return 'border-warning';
+      default:
+        return 'border-light';
+    }
   }
 }

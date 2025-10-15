@@ -9,7 +9,6 @@ namespace EONIS.Data
         public PharmacyContext(DbContextOptions<PharmacyContext> options) : base(options) { }
 
         public DbSet<Product> Products => Set<Product>();
-        public DbSet<StockBatch> StockBatches => Set<StockBatch>();
 
         public DbSet<Order> Orders => Set<Order>();         
         public DbSet<OrderItem> OrderItems => Set<OrderItem>();
@@ -30,10 +29,6 @@ namespace EONIS.Data
                 .Property(p => p.BasePrice)
                 .HasColumnType("decimal(18,2)");
 
-
-            modelBuilder.Entity<StockBatch>()
-                .HasIndex(sb => new { sb.ProductId, sb.LotNumber })
-                .IsUnique();
 
             modelBuilder.Entity<OrderItem>()
                 .HasOne(i => i.Order)
