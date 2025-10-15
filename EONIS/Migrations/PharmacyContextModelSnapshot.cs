@@ -174,17 +174,12 @@ namespace EONIS.Migrations
                     b.Property<string>("CustomerEmail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ReservationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ReservationId");
 
                     b.ToTable("Orders");
                 });
@@ -260,44 +255,6 @@ namespace EONIS.Migrations
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("EONIS.Models.PrescriptionReservation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PrescriptionCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(32)
-                        .HasColumnType("nvarchar(32)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Reservations");
-                });
-
             modelBuilder.Entity("EONIS.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -333,6 +290,9 @@ namespace EONIS.Migrations
 
                     b.Property<bool>("Rx")
                         .HasColumnType("bit");
+
+                    b.Property<int>("TotalStock")
+                        .HasColumnType("int");
 
                     b.Property<int>("VatRate")
                         .HasColumnType("int");
@@ -375,7 +335,7 @@ namespace EONIS.Migrations
                     b.ToTable("StockBatches");
                 });
 
-            modelBuilder.Entity("EONIS.Models.Therapy", b =>
+            modelBuilder.Entity("EONIS.Models.StripeEventLog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -383,55 +343,25 @@ namespace EONIS.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("EventId")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("ProcessedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DoctorName")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                    b.Property<DateTime>("ReceivedAt")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("Dosage")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DosageUnit")
+                    b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
-
-                    b.Property<int>("DurationDays")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Frequency")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<string>("PrescriptionCode")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(24)
-                        .HasColumnType("nvarchar(24)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Therapies");
+                    b.ToTable("StripeEvents");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -589,16 +519,6 @@ namespace EONIS.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("EONIS.Models.Order", b =>
-                {
-                    b.HasOne("EONIS.Models.PrescriptionReservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("Reservation");
-                });
-
             modelBuilder.Entity("EONIS.Models.OrderItem", b =>
                 {
                     b.HasOne("EONIS.Models.Order", "Order")
@@ -618,53 +538,15 @@ namespace EONIS.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("EONIS.Models.PrescriptionReservation", b =>
-                {
-                    b.HasOne("EONIS.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("EONIS.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("EONIS.Models.StockBatch", b =>
                 {
                     b.HasOne("EONIS.Models.Product", "Product")
-                        .WithMany("StockBatches")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("EONIS.Models.Therapy", b =>
-                {
-                    b.HasOne("EONIS.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("EONIS.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -728,11 +610,6 @@ namespace EONIS.Migrations
             modelBuilder.Entity("EONIS.Models.Order", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("EONIS.Models.Product", b =>
-                {
-                    b.Navigation("StockBatches");
                 });
 #pragma warning restore 612, 618
         }

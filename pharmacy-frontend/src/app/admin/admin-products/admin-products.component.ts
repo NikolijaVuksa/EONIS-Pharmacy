@@ -28,6 +28,7 @@ export class AdminProductsComponent implements OnInit {
     category: '',
     description: '',
     imagePath: '',
+    totalStock: 0,
   };
 
   currentPage = 1;
@@ -159,6 +160,7 @@ export class AdminProductsComponent implements OnInit {
       category: p.category,
       description: p.description,
       imagePath: p.imagePath,
+      totalStock: p.totalStock,
     };
   }
 
@@ -178,6 +180,7 @@ export class AdminProductsComponent implements OnInit {
       category: '',
       description: '',
       imagePath: '',
+      totalStock: 0,
     };
     this.selectedFile = null;
     this.imagePreview = null;

@@ -33,9 +33,10 @@ namespace EONIS.Controllers
                 VatRate = p.VatRate,
                 Manufacturer = p.Manufacturer,
                 Category = p.Category,
-                Description = p.Description,    // ✅ dodato
-                ImagePath = p.ImagePath,        // ✅ dodato
-                PriceWithVat = p.PriceWithVat
+                Description = p.Description,    
+                ImagePath = p.ImagePath,       
+                PriceWithVat = p.PriceWithVat,
+                TotalStock = p.TotalStock
             });
 
             return Ok(dtoList);
@@ -47,6 +48,7 @@ namespace EONIS.Controllers
             var product = await _context.Products.FindAsync(id);
             if (product == null) return NotFound();
 
+
             var dto = new ProductReadDto
             {
                 Id = product.Id,
@@ -56,9 +58,11 @@ namespace EONIS.Controllers
                 VatRate = product.VatRate,
                 Manufacturer = product.Manufacturer,
                 Category = product.Category,
-                Description = product.Description, // ✅
-                ImagePath = product.ImagePath,     // ✅
-                PriceWithVat = product.PriceWithVat
+                Description = product.Description, 
+                ImagePath = product.ImagePath,     
+                PriceWithVat = product.PriceWithVat,
+                TotalStock = product.TotalStock
+
             };
 
             return Ok(dto);
@@ -76,8 +80,9 @@ namespace EONIS.Controllers
                 VatRate = dto.VatRate,
                 Manufacturer = dto.Manufacturer,
                 Category = dto.Category,
-                Description = dto.Description,  // ✅
-                ImagePath = dto.ImagePath
+                Description = dto.Description,
+                ImagePath = dto.ImagePath,
+                TotalStock = dto.TotalStock
             };
 
             _context.Products.Add(product);
@@ -92,9 +97,11 @@ namespace EONIS.Controllers
                 VatRate = product.VatRate,
                 Manufacturer = product.Manufacturer,
                 Category = product.Category,
-                Description = product.Description, // ✅
-                ImagePath = product.ImagePath,     // ✅
-                PriceWithVat = product.PriceWithVat
+                Description = product.Description, 
+                ImagePath = product.ImagePath,     
+                PriceWithVat = product.PriceWithVat,
+                TotalStock = product.TotalStock
+
             };
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, readDto);
@@ -102,24 +109,42 @@ namespace EONIS.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product updated)
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductUpdateDto dto)
         {
             var existing = await _context.Products.FindAsync(id);
             if (existing == null)
                 return NotFound();
 
-            existing.Name = updated.Name ?? existing.Name;
-            existing.Rx = updated.Rx;
-            existing.BasePrice = updated.BasePrice != 0 ? updated.BasePrice : existing.BasePrice;
-            existing.VatRate = updated.VatRate != 0 ? updated.VatRate : existing.VatRate;
-            existing.Manufacturer = updated.Manufacturer ?? existing.Manufacturer;
-            existing.Category = updated.Category ?? existing.Category;
-            existing.Description = updated.Description ?? existing.Description; // ✅
-            existing.ImagePath = updated.ImagePath ?? existing.ImagePath;
+            existing.Name = dto.Name ?? existing.Name;
+            existing.Rx = dto.Rx;
+            existing.BasePrice = dto.BasePrice;
+            existing.VatRate = dto.VatRate;
+            existing.Manufacturer = dto.Manufacturer ?? existing.Manufacturer;
+            existing.Category = dto.Category ?? existing.Category;
+            existing.Description = dto.Description ?? existing.Description;
+            existing.ImagePath = dto.ImagePath ?? existing.ImagePath;
+            existing.TotalStock = dto.TotalStock;  
 
             await _context.SaveChangesAsync();
-            return Ok(existing);
+
+            return Ok(new ProductReadDto
+            {
+                Id = existing.Id,
+                Name = existing.Name,
+                Rx = existing.Rx,
+                BasePrice = existing.BasePrice,
+                VatRate = existing.VatRate,
+                Manufacturer = existing.Manufacturer,
+                Category = existing.Category,
+                Description = existing.Description,
+                ImagePath = existing.ImagePath,
+                PriceWithVat = existing.PriceWithVat,
+                TotalStock = existing.TotalStock
+            });
         }
+
+
+
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
@@ -173,7 +198,8 @@ namespace EONIS.Controllers
                     p.Manufacturer,
                     p.Category,
                     p.ImagePath,     
-                    p.Description    
+                    p.Description,
+                    p.TotalStock
                 ))
                 .ToListAsync();
 
@@ -190,35 +216,8 @@ namespace EONIS.Controllers
             if (imageFile == null || imageFile.Length == 0)
                 return BadRequest("Niste poslali fajl.");
 
-            /*var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-            Directory.CreateDirectory(uploadsFolder);
-
-            var fileName = $"{product.Id}_{Path.GetFileName(imageFile.FileName)}";
-            var filePath = Path.Combine(uploadsFolder, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await imageFile.CopyToAsync(stream);
-            }
-
-            product.ImagePath = $"images/{fileName}";
-
-            await using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await imageFile.CopyToAsync(stream);
-            }
-
-            product.ImagePath = $"images/{fileName}";
-
-            _context.Attach(product);
-            _context.Entry(product).Property(p => p.ImagePath).IsModified = true;
-
-            _context.Products.Update(product);
-            await _context.SaveChangesAsync();*/
-
 
             var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-            // Obriši staru sliku ako postoji
             if (!string.IsNullOrEmpty(product.ImagePath))
             {
                 var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", product.ImagePath);
@@ -227,7 +226,6 @@ namespace EONIS.Controllers
                     System.IO.File.Delete(oldFilePath);
                 }
             }
-            // Sada sačuvaj novu sliku
             var fileName = $"{product.Id}_{Path.GetFileName(imageFile.FileName)}";
             var filePath = Path.Combine(uploadsFolder, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))

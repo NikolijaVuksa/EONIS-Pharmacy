@@ -1,21 +1,120 @@
-<h2>Korisnici</h2>
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Korisničko ime</th>
-      <th>Email</th>
-      <th>Ime i prezime</th>
-      <th>Uloge</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let u of users; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ u.userName }}</td>
-      <td>{{ u.email }}</td>
-      <td>{{ u.fullName }}</td>
-      <td>{{ (u.roles || []).join(", ") }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="admin-container">
+  <div class="header d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">Upravljanje korisnicima</h2>
+    <button class="btn btn-add-user" (click)="toggleForm()">
+      + Novi korisnik
+    </button>
+  </div>
+
+  <!-- Forma za dodavanje -->
+  <div *ngIf="showForm" class="form-container card shadow p-4 mb-4">
+    <h3 class="mb-3 text-center">Dodavanje novog korisnika</h3>
+    <form (ngSubmit)="createUser()" class="row g-3">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="newUser.email"
+          name="email"
+          class="form-control"
+          placeholder="Unesite email"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="password" class="form-label">Lozinka</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="newUser.password"
+          name="password"
+          class="form-control"
+          placeholder="Unesite lozinku"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="fullName" class="form-label">Ime i prezime</label>
+        <input
+          id="fullName"
+          type="text"
+          [(ngModel)]="newUser.fullName"
+          name="fullName"
+          class="form-control"
+          placeholder="Unesite ime i prezime"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="role" class="form-label">Rola</label>
+        <select
+          id="role"
+          class="form-select"
+          [(ngModel)]="newUser.role"
+          name="role"
+        >
+          <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-12 text-center mt-4 form-buttons">
+        <button type="submit" class="btn btn-success me-2">
+          Dodaj korisnika
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="toggleForm()">
+          Otkaži
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Grid sa karticama -->
+  <div class="user-grid">
+    <div class="user-card" *ngFor="let u of pagedUsers">
+      <h3 class="user-name">{{ u.fullName || "Nepoznat korisnik" }}</h3>
+      <h3 class="user-email">{{ u.email }}</h3>
+
+      <div class="role-section">
+        <label class="form-label d-block">Uloga</label>
+        <select
+          #roleSel
+          class="form-select mb-3"
+          (change)="changeRole(u.id, roleSel.value)"
+        >
+          <option
+            *ngFor="let r of roles"
+            [value]="r"
+            [selected]="u.roles?.includes(r)"
+          >
+            {{ r }}
+          </option>
+        </select>
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(u.id)">
+          🗑 Obriši
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paginacija -->
+  <div class="pagination text-center mt-4" *ngIf="totalPages > 1">
+    <button
+      class="page-btn"
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+    >
+      « Prethodna
+    </button>
+    <span>Strana {{ currentPage }} od {{ totalPages }}</span>
+    <button
+      class="page-btn"
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+    >
+      Sledeća »
+    </button>
+  </div>
+</div>

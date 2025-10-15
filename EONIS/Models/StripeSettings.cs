@@ -1,9 +1,10 @@
-﻿namespace EONIS.Models
+﻿namespace EONIS.Configuration
 {
-    public sealed class StripeSettings
+    public class StripeSettings
     {
-        public string SecretKey { get; set; } = default!;
-        public string PublishableKey { get; set; } = default!;
+        public string SecretKey { get; set; } = string.Empty;
+        public string PublishableKey { get; set; } = string.Empty;
         public string Currency { get; set; } = "rsd";
+        public string WebhookSecret { get; set; } = string.Empty;
     }
 }

@@ -1,32 +1,83 @@
-<h2>Porudžbine</h2>
+<div class="admin-container">
+  <div class="header d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">Upravljanje porudžbinama</h2>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Kupac</th>
-      <th>Email</th>
-      <th>Datum</th>
-      <th>Status</th>
-      <th>Akcija</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let o of orders">
-      <td>{{ o.id }}</td>
-      <td>{{ o.customerName || "—" }}</td>
-      <td>{{ o.customerEmail }}</td>
-      <td>{{ o.createdAt | date : "yyyy-MM-dd HH:mm" }}</td>
-      <td>
-        <select [(ngModel)]="o.status">
+  <div *ngIf="loading" class="alert alert-info">Učitavanje...</div>
+  <div *ngIf="!loading && orders.length === 0" class="alert alert-secondary">
+    Nema porudžbina.
+  </div>
+
+  <!-- GRID KARTICA -->
+  <div class="order-grid">
+    <div class="order-card" *ngFor="let o of orders">
+      <!-- Naslov -->
+      <h3 class="order-title">Porudžbina #{{ o.id }}</h3>
+
+      <!-- Status -->
+      <p class="order-status">
+        <strong>Status:</strong>
+        <span class="status-badge" [ngClass]="o.status">{{ o.status }}</span>
+      </p>
+
+      <!-- Akcije -->
+      <div class="order-actions">
+        <select [(ngModel)]="o.status" class="form-select mb-2">
           <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
         </select>
-      </td>
-      <td>
-        <button (click)="saveStatus(o)">Sačuvaj</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <div class="d-flex justify-content-center gap-2">
+          <button class="btn btn-success btn-sm" (click)="saveStatus(o)">
+            Sačuvaj
+          </button>
+          <button
+            class="btn btn-outline-primary btn-sm"
+            (click)="toggleDetails(o)"
+          >
+            {{ selectedOrder === o ? "Zatvori" : "Detalji" }}
+          </button>
+        </div>
+      </div>
 
-<div *ngIf="loading">Učitavanje...</div>
+      <!-- Detalji -->
+      <div class="order-details mt-3" *ngIf="selectedOrder === o">
+        <p class="fw-bold">{{ o.customerName || "Nepoznat kupac" }}</p>
+        <p class="text-muted small">{{ o.customerEmail }}</p>
+        <p class="text-muted small">
+          {{ o.createdAt | date : "dd.MM.yyyy HH:mm" }}
+        </p>
+
+        <h6 class="mt-2">Stavke:</h6>
+        <ul class="small">
+          <li *ngFor="let it of o.items">
+            {{ it.productName }} × {{ it.quantity }} —
+            {{ it.unitPrice | number : "1.2-2" }} RSD
+            <span class="text-muted">(PDV {{ it.vatRate }}%)</span>
+          </li>
+        </ul>
+
+        <p class="fw-bold mt-2">
+          Ukupno: {{ getTotal(o) | number : "1.2-2" }} RSD
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGINACIJA -->
+  <div class="pagination text-center mt-4" *ngIf="totalPages > 1">
+    <button
+      class="page-btn"
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+    >
+      « Prethodna
+    </button>
+    <span>Strana {{ currentPage }} od {{ totalPages }}</span>
+    <button
+      class="page-btn"
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+    >
+      Sledeća »
+    </button>
+  </div>
+</div>

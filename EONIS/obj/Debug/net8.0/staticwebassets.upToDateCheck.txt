@@ -2,3 +2,25 @@ wwwroot\images\2_paracetamol.jpg
 wwwroot\images\default-product.jpg
 wwwroot\images\5_biofar-magne-time-400-direct-14-kesica-srbotrade (1).jpg
 wwwroot\images\1_brufen.jpg
+wwwroot\images\3_cedevita.jpg
+wwwroot\images\6_aspirin.jpg
+wwwroot\images\7_vitc+cink.png
+wwwroot\images\8_probioticforte.jpg
+wwwroot\images\9_nurofen.jpg
+wwwroot\images\10_andol.jpg
+wwwroot\images\11_otrivin.jpg
+wwwroot\images\12_bepanthen.jpg
+wwwroot\images\13_panadol.jpg
+wwwroot\images\14_kafetin.jpg
+wwwroot\images\15_neofen.jpg
+wwwroot\images\16_septolete.jpg
+wwwroot\images\17_flonvin.jpg
+wwwroot\images\18_propolis.jpg
+wwwroot\images\19_lactulose.jpg
+wwwroot\images\20_enterofuril.jpg
+wwwroot\images\21_gastal.jpg
+wwwroot\images\22_smecta.jpg
+wwwroot\images\23_voltaren.jpg
+wwwroot\images\24_max.jpg
+wwwroot\images\25_rapid.png
+wwwroot\images\26_panadol extra.jpg

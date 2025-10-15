@@ -62,7 +62,7 @@
     ]
   },
   {
-    "ContainingType": "AdminUsersController",
+    "ContainingType": "EONIS.Controllers.AdminUsersController",
     "Method": "GetAll",
     "RelativePath": "api/admin/users",
     "HttpMethod": "GET",
@@ -80,6 +80,59 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "EONIS.Controllers.AdminUsersController",
+    "Method": "Create",
+    "RelativePath": "api/admin/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "EONIS.Controllers.CreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EONIS.Controllers.AdminUsersController",
+    "Method": "Delete",
+    "RelativePath": "api/admin/users/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EONIS.Controllers.AdminUsersController",
+    "Method": "UpdateRole",
+    "RelativePath": "api/admin/users/{id}/role",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "EONIS.Controllers.UpdateRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "EONIS.Controllers.AuthController",
@@ -448,8 +501,8 @@
         "IsRequired": true
       },
       {
-        "Name": "updated",
-        "Type": "EONIS.Models.Product",
+        "Name": "dto",
+        "Type": "EONIS.DTOs.ProductUpdateDto",
         "IsRequired": true
       }
     ],
@@ -713,6 +766,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EONIS.Controllers.StripeWebhookController",
+    "Method": "Handle",
+    "RelativePath": "api/stripe/webhook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

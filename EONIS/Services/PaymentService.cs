@@ -1,4 +1,5 @@
-﻿using EONIS.Data;
+﻿using EONIS.Configuration;
+using EONIS.Data;
 using EONIS.DTOs.Payments;
 using EONIS.Models;
 using Microsoft.EntityFrameworkCore;
@@ -42,8 +43,14 @@ namespace EONIS.Services
                 Amount = totalPara,
                 Currency = _cfg.Currency,
                 PaymentMethodTypes = new List<string> { "card" },
-                Metadata = new Dictionary<string, string> { { "orderId", order.Id.ToString() } }
-            };
+                Metadata = new Dictionary<string, string>
+                {
+                    {"orderId", orderId.ToString()},
+                    {"CustomerEmail", order.CustomerEmail }
+                }
+                        };
+
+
 
             var service = new PaymentIntentService();
             var intent = await service.CreateAsync(options);
@@ -60,6 +67,8 @@ namespace EONIS.Services
 
             _db.Payments.Add(payment);
             order.Status = "Payment Pending";
+
+
 
             await _db.SaveChangesAsync();
 

@@ -6,10 +6,12 @@
     </button>
   </div>
 
+  <!-- Forma za dodavanje/izmenu -->
   <div *ngIf="showForm" class="form-container card shadow p-4 mb-4">
     <h3 class="mb-3 text-center">
       {{ editId ? "Izmena proizvoda" : "Dodavanje novog proizvoda" }}
     </h3>
+
     <form (ngSubmit)="submit()" class="product-form row g-3">
       <div class="col-md-6">
         <label for="name" class="form-label">Naziv</label>
@@ -67,6 +69,19 @@
         />
       </div>
 
+      <!-- Novo polje za zalihu -->
+      <div class="col-md-3">
+        <label for="totalStock" class="form-label">Količina na zalihama</label>
+        <input
+          id="totalStock"
+          type="number"
+          [(ngModel)]="form.totalStock"
+          name="totalStock"
+          class="form-control"
+          min="0"
+        />
+      </div>
+
       <div class="col-md-12 form-check mt-2">
         <input
           id="rx"
@@ -113,6 +128,7 @@
     </form>
   </div>
 
+  <!-- Grid proizvoda -->
   <div class="product-grid">
     <div class="product-card" *ngFor="let p of pagedProducts">
       <img
@@ -144,6 +160,11 @@
         {{ p.description || "Nema opisa." }}
       </p>
 
+      <!-- Samo prikaz zaliha -->
+      <p class="stock-info">
+        Količina na zalihama: <strong>{{ p.totalStock }}</strong>
+      </p>
+
       <div class="card-actions d-flex justify-content-center gap-2 mt-2">
         <button class="btn btn-warning btn-sm" (click)="edit(p)">
           ✏ Izmeni
@@ -155,6 +176,7 @@
     </div>
   </div>
 
+  <!-- Paginacija -->
   <div class="pagination text-center mt-4" *ngIf="totalPages > 1">
     <button
       class="page-btn"

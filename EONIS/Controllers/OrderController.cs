@@ -1,7 +1,6 @@
 ﻿using EONIS.Data;
 using EONIS.DTOs;
 using EONIS.Models;
-using EONIS.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +13,10 @@ namespace EONIS.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly PharmacyContext _db;
-        private readonly OrderService _svc;
 
-        public OrdersController(PharmacyContext db, OrderService svc)
+        public OrdersController(PharmacyContext db)
         {
             _db = db;
-            _svc = svc;
         }
 
         private static OrderReadDto Map(Order o) => new OrderReadDto
@@ -39,40 +36,38 @@ namespace EONIS.Controllers
             }).ToList()
         };
 
-        // kreiraj order sa vise stavki 
+        // ✅ kreiranje order-a
         [HttpPost]
         public async Task<ActionResult<OrderReadDto>> CreateOrder([FromBody] OrderCreateDto dto)
         {
             if (dto.Items is null || dto.Items.Count == 0)
                 return BadRequest("Order must contain at least one item.");
 
-            //da li svi proizvodi postoje
             var productIds = dto.Items.Select(it => it.ProductId).Distinct().ToList();
             var products = await _db.Products
-                                    .Where(p => productIds.Contains(p.Id))
-                                    .ToDictionaryAsync(p => p.Id);
+                .Where(p => productIds.Contains(p.Id))
+                .ToDictionaryAsync(p => p.Id);
+
             if (products.Count != productIds.Count)
                 return BadRequest("One or more products do not exist.");
 
-            // provara zaliha
-            var requestedPerProduct = dto.Items
-                .GroupBy(i => i.ProductId)
-                .ToDictionary(g => g.Key, g => g.Sum(x => x.Quantity));
-
-            foreach (var kv in requestedPerProduct)
+            // provera da li ima dovoljno zaliha
+            foreach (var item in dto.Items)
             {
-                if (kv.Value <= 0) return BadRequest("Quantity must be >= 1.");
-                var enough = await _svc.HasSufficientStockAsync(kv.Key, kv.Value);
-                if (!enough) return BadRequest($"Not enough stock for product {kv.Key}.");
+                var p = products[item.ProductId];
+                if (item.Quantity <= 0)
+                    return BadRequest("Quantity must be >= 1.");
+                if (p.TotalStock < item.Quantity)
+                    return BadRequest($"Not enough stock for product {p.Name}.");
             }
 
-            // Draft order snapshot
             var order = new Order
             {
                 Status = "Draft",
                 CustomerEmail = dto.CustomerEmail,
                 CreatedAt = DateTime.UtcNow,
-                Items = dto.Items.Select(i => {
+                Items = dto.Items.Select(i =>
+                {
                     var p = products[i.ProductId];
                     return new OrderItem
                     {
@@ -94,15 +89,12 @@ namespace EONIS.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<OrderReadDto>> GetOrder(int id)
         {
-            var order = await _db.Orders
-                .Include(o => o.Items)
-                .FirstOrDefaultAsync(o => o.Id == id);
-
+            var order = await _db.Orders.Include(o => o.Items).FirstOrDefaultAsync(o => o.Id == id);
             if (order is null) return NotFound();
             return Ok(Map(order));
         }
 
-        //skini sa zaliha
+        // ✅ place -> skida sa zaliha (TotalStock)
         [HttpPost("{id:int}/place")]
         public async Task<ActionResult<OrderReadDto>> Place(int id)
         {
@@ -110,23 +102,20 @@ namespace EONIS.Controllers
             if (order is null) return NotFound();
             if (order.Status != "Draft") return BadRequest("Order already placed.");
 
-            // Finalna provera zaliha
-            var itemsByProduct = order.Items.GroupBy(i => i.ProductId)
-                                            .ToDictionary(g => g.Key, g => g.Sum(x => x.Quantity));
-            foreach (var kv in itemsByProduct)
+            foreach (var item in order.Items)
             {
-                var enough = await _svc.HasSufficientStockAsync(kv.Key, kv.Value);
-                if (!enough) return BadRequest($"Not enough stock for product {kv.Key}.");
-            }
+                var product = await _db.Products.FindAsync(item.ProductId);
+                if (product == null) return BadRequest($"Product {item.ProductId} not found.");
+                if (product.TotalStock < item.Quantity)
+                    return BadRequest($"Not enough stock for product {product.Name}.");
 
-            foreach (var kv in itemsByProduct)
-                await _svc.DeductStockFifoAsync(kv.Key, kv.Value);
+                product.TotalStock -= item.Quantity; //skidanje zaliha
+            }
 
             order.Status = "Placed";
             await _db.SaveChangesAsync();
 
-            var placed = await _db.Orders.Include(o => o.Items).FirstAsync(o => o.Id == id);
-            return Ok(Map(placed));
+            return Ok(Map(order));
         }
 
         [HttpPost("{id:int}/pay")]
@@ -134,9 +123,7 @@ namespace EONIS.Controllers
         {
             var order = await _db.Orders.Include(o => o.Items).FirstOrDefaultAsync(o => o.Id == id);
             if (order is null) return NotFound();
-
-            if (order.Status != "Placed")
-                return BadRequest("Only placed orders can be marked as paid.");
+            if (order.Status != "Placed") return BadRequest("Only placed orders can be marked as paid.");
 
             order.Status = "Paid";
             await _db.SaveChangesAsync();
@@ -144,6 +131,7 @@ namespace EONIS.Controllers
             return Ok(Map(order));
         }
 
+        // ✅ cancel -> vraća količinu na TotalStock
         [HttpPost("{id:int}/cancel")]
         public async Task<ActionResult<OrderReadDto>> Cancel(int id)
         {
@@ -160,13 +148,9 @@ namespace EONIS.Controllers
             {
                 foreach (var item in order.Items)
                 {
-                    var batch = await _db.StockBatches
-                        .Where(b => b.ProductId == item.ProductId)
-                        .OrderByDescending(b => b.ExpiryDate) // vrati u batch s najdaljim rokom
-                        .FirstOrDefaultAsync();
-
-                    if (batch != null)
-                        batch.QuantityOnHand += item.Quantity;
+                    var product = await _db.Products.FindAsync(item.ProductId);
+                    if (product != null)
+                        product.TotalStock += item.Quantity; // ❗ vraćanje
                 }
             }
 
@@ -176,31 +160,6 @@ namespace EONIS.Controllers
             return Ok(Map(order));
         }
 
-        /*[Authorize(Roles = "Customer")]
-        [HttpGet("my-orders")]
-        public async Task<ActionResult<IEnumerable<Order>>> GetMyOrders()
-        {
-            var email = User.FindFirst(ClaimTypes.Email)?.Value ??
-                        User.FindFirst("email")?.Value ??
-                        User.FindFirst(ClaimTypes.Name)?.Value;
-
-            if (email == null)
-                return Unauthorized("Nevažeći token.");
-
-            /*var email = User.Identity?.Name;
-            if (email == null)
-                return Unauthorized();*/
-
-        /*var orders = await _db.Orders
-            .Include(o => o.Items)
-            .ThenInclude(oi => oi.Product)
-            .Where(o => o.CustomerEmail == email)
-            .OrderByDescending(o => o.CreatedAt)
-            .ToListAsync();
-
-        return Ok(orders);
-    }*/
-
         [Authorize(Roles = "Customer")]
         [HttpGet("my-orders")]
         public async Task<IActionResult> GetMyOrders()
@@ -209,8 +168,7 @@ namespace EONIS.Controllers
                         User.FindFirst("email")?.Value ??
                         User.FindFirst(ClaimTypes.Name)?.Value;
 
-            if (email == null)
-                return Unauthorized("Nevažeći token.");
+            if (email == null) return Unauthorized("Nevažeći token.");
 
             var orders = await _db.Orders
                 .Include(o => o.Items)
@@ -232,24 +190,18 @@ namespace EONIS.Controllers
                     Quantity = i.Quantity,
                     UnitPrice = i.UnitPrice
                 }).ToList()
-
             });
 
             return Ok(result);
         }
 
-
         [Authorize(Roles = "Admin")]
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<AdminOrderReadDto>>> GetAllOrders()
         {
-            var orders = await _db.Orders
-                .Include(o => o.Items)
-                .OrderByDescending(o => o.CreatedAt)
-                .ToListAsync();
-
-            // Dobijanje imena korisnika prema emailu iz baze (Identity)
+            var orders = await _db.Orders.Include(o => o.Items).OrderByDescending(o => o.CreatedAt).ToListAsync();
             var users = await _db.Users.ToListAsync();
+
             var dtos = orders.Select(o => new AdminOrderReadDto
             {
                 Id = o.Id,
@@ -282,7 +234,5 @@ namespace EONIS.Controllers
             await _db.SaveChangesAsync();
             return NoContent();
         }
-
-
     }
 }

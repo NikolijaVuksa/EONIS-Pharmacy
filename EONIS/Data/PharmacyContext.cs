@@ -18,7 +18,8 @@ namespace EONIS.Data
         public DbSet<AdminProfile> Admins => Set<AdminProfile>();
         public DbSet<Payment> Payments { get; set; } = default!;
 
-       
+        public DbSet<StripeEventLog> StripeEvents => Set<StripeEventLog>();
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,11 +30,6 @@ namespace EONIS.Data
                 .Property(p => p.BasePrice)
                 .HasColumnType("decimal(18,2)");
 
-            modelBuilder.Entity<StockBatch>()
-                .HasOne(sb => sb.Product)
-                .WithMany(p => p.StockBatches)
-                .HasForeignKey(sb => sb.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<StockBatch>()
                 .HasIndex(sb => new { sb.ProductId, sb.LotNumber })

@@ -1,0 +1,177 @@
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.user-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+.user-email {
+  color: #00695c;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.role-section {
+  margin-top: 1rem;
+}
+
+.role-section select {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.btn-add-user {
+  background-color: #00695c;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.btn-add-user:hover {
+  background-color: #004d40;
+}
+
+.card-actions .btn-danger,
+.role-section .btn-danger {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.card-actions .btn-danger:hover,
+.role-section .btn-danger:hover {
+  background-color: #b71c1c;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.page-btn {
+  background-color: #00695c;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  background-color: #004d40;
+}
+
+.page-btn:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.form-container {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #004d40;
+  margin-bottom: 1.5rem;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  border: 1.5px solid #80cbc4;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  background-color: #f9fdfd;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #00695c;
+  box-shadow: 0 0 6px rgba(0, 105, 92, 0.3);
+  background-color: #fff;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #004d40;
+}
+
+.form-buttons .btn-success {
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  border: none;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  margin-right: 0.8rem;
+}
+
+.form-buttons .btn-success:hover {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  transform: translateY(-2px);
+}
+
+.form-buttons .btn-secondary {
+  background-color: #9e9e9e;
+  border: none;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+}
+
+.form-buttons .btn-secondary:hover {
+  background-color: #757575;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #004d40;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  border: 1.5px solid #80cbc4;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  background-color: #f9fdfd;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-bottom: 1rem;
+}

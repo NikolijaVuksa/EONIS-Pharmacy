@@ -138,6 +138,98 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "AdminUsers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/users/{id}/role": {
+      "put": {
+        "tags": [
+          "AdminUsers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/users/{id}": {
+      "delete": {
+        "tags": [
+          "AdminUsers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/Auth/register-customer": {
@@ -753,17 +845,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/ProductUpdateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/ProductUpdateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/ProductUpdateDto"
               }
             }
           }
@@ -1220,6 +1312,18 @@
           }
         }
       }
+    },
+    "/api/stripe/webhook": {
+      "post": {
+        "tags": [
+          "StripeWebhook"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1270,6 +1374,28 @@
           },
           "isSuperAdmin": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1489,69 +1615,6 @@
         },
         "additionalProperties": false
       },
-      "Product": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "maxLength": 160,
-            "minLength": 1,
-            "type": "string"
-          },
-          "rx": {
-            "type": "boolean"
-          },
-          "basePrice": {
-            "maximum": 100000,
-            "minimum": 0,
-            "type": "number",
-            "format": "double"
-          },
-          "vatRate": {
-            "maximum": 50,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
-          "manufacturer": {
-            "maxLength": 160,
-            "type": "string",
-            "nullable": true
-          },
-          "category": {
-            "maxLength": 120,
-            "type": "string",
-            "nullable": true
-          },
-          "priceWithVat": {
-            "type": "number",
-            "format": "double",
-            "readOnly": true
-          },
-          "stockBatches": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/StockBatch"
-            },
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "imagePath": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ProductCreateDto": {
         "type": "object",
         "properties": {
@@ -1585,6 +1648,10 @@
           "imagePath": {
             "type": "string",
             "nullable": true
+          },
+          "totalStock": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1626,6 +1693,10 @@
           "imagePath": {
             "type": "string",
             "nullable": true
+          },
+          "totalStock": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1696,6 +1767,51 @@
           "imagePath": {
             "type": "string",
             "nullable": true
+          },
+          "totalStock": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductUpdateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "rx": {
+            "type": "boolean"
+          },
+          "basePrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "vatRate": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "manufacturer": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagePath": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalStock": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1768,45 +1884,6 @@
         },
         "additionalProperties": false
       },
-      "StockBatch": {
-        "required": [
-          "lotNumber"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "product": {
-            "$ref": "#/components/schemas/Product"
-          },
-          "lotNumber": {
-            "maxLength": 64,
-            "minLength": 1,
-            "type": "string"
-          },
-          "expiryDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "quantityOnHand": {
-            "maximum": 2147483647,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
       "StockBatchCreateDto": {
         "type": "object",
         "properties": {
@@ -1855,6 +1932,16 @@
         "type": "object",
         "properties": {
           "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateRoleDto": {
+        "type": "object",
+        "properties": {
+          "role": {
             "type": "string",
             "nullable": true
           }

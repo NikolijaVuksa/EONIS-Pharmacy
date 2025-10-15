@@ -1,4 +1,5 @@
-﻿using EONIS.Data;
+﻿using EONIS.Configuration;
+using EONIS.Data;
 using EONIS.Models;
 using EONIS.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -72,6 +73,8 @@ namespace EONIS
                 });
             });
 
+            var stripeSettings = builder.Configuration.GetSection("Stripe").Get<StripeSettings>();
+            StripeConfiguration.ApiKey = stripeSettings.SecretKey;
 
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
